@@ -37,13 +37,13 @@ Material:
     - _GradientCRamp1: 1
     - _GradientCRamp2: 0
     - _GradientCRampnum1: 0.627
-    - _GradientCRampnum2: 0
+    - _GradientCRampnum2: 0.228
     - _RimAmount: 0.72
     - _RimThreshold: 0.091
     - _numColors: 7
     m_Colors:
     - _AmbientColor: {r: 0.39999998, g: 0.39999998, b: 0.39999998, a: 1}
-    - _Color: {r: 0.5, g: 0.65, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _GradientColor1: {r: 1, g: 1, b: 1, a: 0}
     - _GradientColor2: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
