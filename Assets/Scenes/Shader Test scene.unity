@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tonemapperShader: {fileID: 4800000, guid: bbc9eab191cc7aa48bb9e841071d784c, type: 3}
-  toneMapper: 6
+  toneMapper: 11
   Ldmax: 1.96
   Cmax: 8.23
   p: 8.94
