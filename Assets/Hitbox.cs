@@ -41,7 +41,8 @@ public class Hitbox : MonoBehaviour
                         print(Trigger);
                         if (Manager != null)
                         {
-                            print("Yo sent it up stream");
+                            DanceManager dscript = Manager.GetComponent<DanceManager>();
+                            dscript.FadeToLevel(0);
                         }
                     }
                 }
