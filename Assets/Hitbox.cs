@@ -42,7 +42,7 @@ public class Hitbox : MonoBehaviour
                         if (Manager != null)
                         {
                             DanceManager dscript = Manager.GetComponent<DanceManager>();
-                            dscript.FadeToLevel(0);
+                            //dscript.FadeToLevel(0);
                         }
                     }
                 }
