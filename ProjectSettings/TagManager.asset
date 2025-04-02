@@ -6,6 +6,11 @@ TagManager:
   tags:
   - projectile
   - FxTemporaire
+  - HeadIk
+  - LeftArmIk
+  - RightArmIk
+  - LeftLegIk
+  - RightLegIk
   layers:
   - Default
   - TransparentFX
