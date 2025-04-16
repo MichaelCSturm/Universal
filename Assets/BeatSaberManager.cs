@@ -42,7 +42,7 @@ public class BeatSaberManager : MonoBehaviour
         {
             foreach (GameObject box in hitboxes)
             {
-                box.transform.position = new Vector3(box.transform.position.x + speed, 0, 0);
+                box.transform.position = new Vector3(0, 0, box.transform.position.z + speed);
             }
 
         }
