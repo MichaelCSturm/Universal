@@ -21,7 +21,14 @@ public class DanceManager : MonoBehaviour
         }
        // MainMaster.startTimer();
     }
-
+    public void OnFadeComplete()
+    {
+        MainMaster.OnFadeComplete();
+    }
+    public void runNextArea()
+    {
+        MainMaster.FadeToLevel(0);
+    }
     
 
     // Update is called once per frame
