@@ -7,6 +7,8 @@ public class BeatSaberManager : MonoBehaviour
     public Animator animator;
     Master MainMaster;
     private int levelToLoad;
+
+    public float[] values;
     // Start is called before the first frame update
 
     public float timeValue = 90;
