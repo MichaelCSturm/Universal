@@ -41,8 +41,8 @@ public class Hitbox : MonoBehaviour
                         print(Trigger);
                         if (Manager != null)
                         {
-                            DanceManager dscript = Manager.GetComponent<DanceManager>();
-                            dscript.runNextArea();
+                            //DanceManager dscript = Manager.GetComponent<DanceManager>();
+                            //dscript.runNextArea();
                         }
                     }
                 }
