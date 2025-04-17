@@ -14,6 +14,9 @@ public class Hitbox : MonoBehaviour
     public GameObject Manager;
     List<GameObject> Triggers;
     //List<GameObject> goList;
+
+    public bool hit = false;
+
     void Start()
     {
         Triggers = new List<GameObject>();
@@ -41,6 +44,7 @@ public class Hitbox : MonoBehaviour
                         print(Trigger);
                         if (Manager != null)
                         {
+                            hit = true;
                             //DanceManager dscript = Manager.GetComponent<DanceManager>();
                             //dscript.runNextArea();
                         }
