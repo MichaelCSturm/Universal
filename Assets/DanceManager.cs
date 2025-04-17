@@ -9,6 +9,8 @@ public class DanceManager : MonoBehaviour
     Master MainMaster;
     private int levelToLoad;
     // Start is called before the first frame update
+
+    public float timeValue = 90;
     void Start()
     {
         MainMaster = new Master();
@@ -17,14 +19,22 @@ public class DanceManager : MonoBehaviour
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
         }
-        //print(MainManager.getme);
+       // MainMaster.startTimer();
     }
-
+    public void OnFadeComplete()
+    {
+        MainMaster.OnFadeComplete();
+    }
+    public void runNextArea()
+    {
+        MainMaster.FadeToLevel(0);
+    }
     
 
     // Update is called once per frame
     void Update()
     {
-        
+        timeValue -=Time.deltaTime;
+        print(MainMaster.TimeManager().ToString());
     }
 }
