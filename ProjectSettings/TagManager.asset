@@ -11,6 +11,8 @@ TagManager:
   - RightArmIk
   - LeftLegIk
   - RightLegIk
+  - Obstacle
+  - Coin
   layers:
   - Default
   - TransparentFX
