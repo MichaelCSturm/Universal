@@ -11,6 +11,11 @@ TagManager:
   - RightArmIk
   - LeftLegIk
   - RightLegIk
+  - Obstacle
+  - Coin
+  - Destroy
+  - target
+  - enemy
   layers:
   - Default
   - TransparentFX
