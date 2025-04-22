@@ -13,6 +13,7 @@ TagManager:
   - RightLegIk
   - Obstacle
   - Coin
+  - Destroy
   layers:
   - Default
   - TransparentFX

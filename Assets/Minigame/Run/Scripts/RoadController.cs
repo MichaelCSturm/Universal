@@ -46,7 +46,7 @@ public class RoadController : MonoBehaviour
     private void SpawnObstacle()
     {
         Randomizer();
-        Vector3 spawnPosition = new Vector3(-23.65999984741211f, -0.4040253162384033f, -0.5642862319946289f);
+        Vector3 spawnPosition = new Vector3(0f, 0f, 0f);
         GameObject spawnedPrefab = Instantiate(currentObstacle, spawnPosition, Quaternion.identity);
         spawnedPrefab.transform.SetParent(road.transform);
     }
@@ -56,6 +56,4 @@ public class RoadController : MonoBehaviour
         index = Random.Range (0, obstacles.Length);
         currentObstacle = obstacles[index];
     }
-
-     //need to add in destroy obstacle function
 }
