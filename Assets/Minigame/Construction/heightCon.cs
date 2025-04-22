@@ -19,6 +19,7 @@ public class heightCon : MonoBehaviour
         foreach (var tracker in TrackerConnections)
         {
             tracker.offset = tracker.bar.transform.position.y - tracker.controller.transform.position.y;
+      
         }
         
     }
@@ -34,7 +35,7 @@ public class heightCon : MonoBehaviour
 
                 tracker.bar.transform.position = new Vector3(
                     tracker.bar.transform.position.x,
-                    tracker.controller.transform.position.y + tracker.offset,
+                    (tracker.controller.transform.position.y * 25) + tracker.offset,
                     tracker.bar.transform.position.z);
                 
             }
