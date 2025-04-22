@@ -7,11 +7,14 @@ public class Singleton
     public static Singleton instance;
     public bool IsRunning;
     public float ElapsedTime;
+    public int Score;
     private Singleton() 
     {
         ElapsedTime = 0;
 
         IsRunning = true;
+
+        Score = 0;
     }
 
     public static Singleton Instance

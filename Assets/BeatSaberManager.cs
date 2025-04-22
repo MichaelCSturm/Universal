@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class BeatSaberManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class BeatSaberManager : MonoBehaviour
     public GameObject LeftLegTrigger;
     public GameObject Hitbox;
     public Animator animator;
+    public GameObject Master;
     public float speed;
     Master MainMaster;
     private int levelToLoad;
@@ -26,6 +28,8 @@ public class BeatSaberManager : MonoBehaviour
     bool quit = false;
     public int LimitOfBoxes = 1;
     public float timeValue = 15;
+    public int GoodScore = 0;
+    public int BadScore = 0;
     void CreateHitBox()
     {
         Vector3 Location = new Vector3(0, 0, 0);
@@ -62,7 +66,9 @@ public class BeatSaberManager : MonoBehaviour
     }
     void Start()
     {
-        MainMaster = new Master();
+        GameObject ObjectMaster = Instantiate(Master, new Vector3(0,0,0), Quaternion.identity);
+        MainMaster = ObjectMaster.GetComponent<Master>();
+        //MainMaster = new Master();
         if (animator != null)
         {
             MainMaster.animator = animator;
@@ -76,7 +82,8 @@ public class BeatSaberManager : MonoBehaviour
         MainMaster.OnFadeComplete();
     }
     public void Update()
-    {   
+    {
+        //var ignoreme = MainMaster.TimeManager().ToString();
         if (hitboxes.Count != 0)
         {
             foreach (GameObject box in hitboxes)
@@ -91,6 +98,19 @@ public class BeatSaberManager : MonoBehaviour
             }
             if (hitboxes[0].transform.position.z > 30)
             {
+                if (hitboxes[0].GetComponent<BeatSaberHitbox>().hit == true)
+                {
+                    GoodScore = GoodScore + 1;
+                }
+                else
+                {
+                    BadScore = BadScore + 1;
+                }
+                if(BadScore >= 2)
+                {
+                    print("YO WE LOST");
+                    print(MainMaster.TimeManager().ToString());
+                }
                 Destroy(hitboxes[0]);
                 hitboxes.RemoveAt(0);
                 //triggerOnce = true;
