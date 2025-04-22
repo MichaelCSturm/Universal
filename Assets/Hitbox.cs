@@ -42,12 +42,12 @@ public class Hitbox : MonoBehaviour
                     if (Trigger == other.gameObject)
                     {
                         print(Trigger);
-                        if (Manager != null)
-                        {
+                        //if (Manager != null)
+                        //{
                             hit = true;
                             //DanceManager dscript = Manager.GetComponent<DanceManager>();
                             //dscript.runNextArea();
-                        }
+                        //}
                     }
                 }
                     

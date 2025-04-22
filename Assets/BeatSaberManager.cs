@@ -58,6 +58,7 @@ public class BeatSaberManager : MonoBehaviour
         thisbox.GetComponent<BeatSaberHitbox>().LeftArmTrigger = LeftArmTrigger;
         thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
         thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
+        thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
         //    public GameObject HeadTrigger;
         //public GameObject RightArmTrigger;
         //public GameObject LeftArmTrigger;
@@ -110,6 +111,14 @@ public class BeatSaberManager : MonoBehaviour
                 {
                     print("YO WE LOST");
                     print(MainMaster.TimeManager().ToString());
+                }
+                if (GoodScore >= 2)
+                {
+                    print("WINNINNNG");
+                    MainMaster.AddToScore(1);
+                    print(MainMaster.ReturnScore().ToString());
+                    print(MainMaster.TimeManager().ToString());
+                    MainMaster.FadeToLevel(1);
                 }
                 Destroy(hitboxes[0]);
                 hitboxes.RemoveAt(0);
