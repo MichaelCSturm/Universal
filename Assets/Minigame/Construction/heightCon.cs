@@ -8,12 +8,17 @@ public class Connect
     public GameObject controller;
     public GameObject bar;
     public float offset;
+    public int aol;
 }
+
+
 
 public class heightCon : MonoBehaviour
 {
     public Connect[] TrackerConnections;
-    
+
+    public float[] aolOff;
+
     void Start()
     {
         foreach (var tracker in TrackerConnections)
@@ -29,13 +34,13 @@ public class heightCon : MonoBehaviour
         {
             if (tracker.controller != null && tracker.bar != null)
             {
-                Vector3 OZ = tracker.bar.transform.rotation.eulerAngles;
-                OZ.z = tracker.controller.transform.rotation.eulerAngles.z;
-                tracker.bar.transform.rotation = Quaternion.Euler(OZ);
+                //Vector3 OZ = tracker.bar.transform.rotation.eulerAngles;
+                //OZ.z = tracker.controller.transform.rotation.eulerAngles.z;
+                //tracker.bar.transform.rotation = Quaternion.Euler(OZ);
 
                 tracker.bar.transform.position = new Vector3(
                     tracker.bar.transform.position.x,
-                    (tracker.controller.transform.position.y * 25) + tracker.offset,
+                    (tracker.controller.transform.position.y * aolOff[tracker.aol]) + tracker.offset,
                     tracker.bar.transform.position.z);
                 
             }
