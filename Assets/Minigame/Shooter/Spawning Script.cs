@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public float speed;
     Master MainMaster;
     private int levelToLoad;
-    public int NumberOfEnemysToDestroy;
+    public int PointsToWin;
     public GameObject selfManager;
     public int destroyedEnemys = 0;
     
@@ -33,8 +33,9 @@ public class EnemySpawner : MonoBehaviour
     }
     public void Update()
     {
-        if (points >= difficultyWC)// WIN CON RIGHT HERE
+        if (points >= PointsToWin)// WIN CON RIGHT HERE
         {
+            print(" AY WE WINNING SWITCHING TO THE NEXT SCENE");
             MainMaster.FadeToLevel(2);
         }
     }
