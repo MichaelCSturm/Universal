@@ -15,12 +15,28 @@ public class ConstructController : MonoBehaviour
     public GameObject[] targets;
 
     private Transform chosenTarget;
+    public Animator animator;
+    public GameObject Master;
+    Master MainMaster;
+    private int levelToLoad;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
+        MainMaster = ObjectMaster.GetComponent<Master>();
+        //MainMaster = new Master();
+        if (animator != null)
+        {
+            MainMaster.animator = animator;
+            MainMaster.levelToLoad = levelToLoad;
+        }
         StartCoroutine(SpawnGuys());
     }
-
+    public void OnFadeComplete() // The animation will freak out if this is not here.
+    {
+        MainMaster.OnFadeComplete();
+    }
     // Update is called once per frame
     void Update()
     {

@@ -7,9 +7,26 @@ public class RunController : MonoBehaviour
     int points;
     public int level;
     public int[] winThreshold; //made this public so we can adjust it to whatever feels most natural
+    public Animator animator;
+    public GameObject Master;
+    public float speed;
+    Master MainMaster;
+    private int levelToLoad;
     private void Start()
     {
+        GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
+        MainMaster = ObjectMaster.GetComponent<Master>();
+        //MainMaster = new Master();
+        if (animator != null)
+        {
+            MainMaster.animator = animator;
+            MainMaster.levelToLoad = levelToLoad;
+        }
         points = 0;
+    }
+    public void OnFadeComplete() // The animation will freak out if this is not here.
+    {
+        MainMaster.OnFadeComplete();
     }
     private void OnTriggerEnter(Collider other)
     {

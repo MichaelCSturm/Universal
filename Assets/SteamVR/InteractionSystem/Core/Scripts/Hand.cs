@@ -985,7 +985,7 @@ namespace Valve.VR.InteractionSystem
             if (noSteamVRFallbackCamera)
             {
                 Ray ray = noSteamVRFallbackCamera.ScreenPointToRay(Input.mousePosition);
-
+                
                 if (attachedObjects.Count > 0)
                 {
                     // Holding down the mouse:

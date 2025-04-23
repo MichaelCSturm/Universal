@@ -28,15 +28,17 @@ public class Master : MonoBehaviour
     {
         Singleton.Instance.Score = Singleton.Instance.Score + number_to_add;
     }
+    public void Timer()
+    {
+        Singleton.Instance.ElapsedTime += Time.deltaTime;
+    }
     public float TimeManager()
     { 
-        Singleton.Instance.ElapsedTime += Time.deltaTime;
-        float timePassed = Singleton.Instance.ElapsedTime;
-        return timePassed;
+        return Singleton.Instance.ElapsedTime;
     }
     public void Update()
     {
-        var ignoreme = TimeManager();
+        Timer();
     }
 
 

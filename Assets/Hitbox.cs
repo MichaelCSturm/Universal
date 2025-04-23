@@ -12,7 +12,7 @@ public class Hitbox : MonoBehaviour
     public bool CheckForSpeficTrigger;
     public GameObject SpeficTrigger;
     public GameObject Manager;
-    List<GameObject> Triggers;
+    public List<GameObject> Triggers;
     //List<GameObject> goList;
 
     public bool hit = false;

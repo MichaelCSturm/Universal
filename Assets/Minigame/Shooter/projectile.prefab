@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1299459996939692018}
   - component: {fileID: 3866392505978558911}
   - component: {fileID: 4045396234403807821}
+  - component: {fileID: 8546191512111419552}
   m_Layer: 0
   m_Name: projectile
   m_TagString: projectile
@@ -100,7 +101,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -135,3 +136,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8546191512111419552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686030361222199365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef523ed3227178d4c8fa3fc35438405e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterThisDistance: 5
