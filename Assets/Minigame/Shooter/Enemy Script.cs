@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
     private float timeOffset;
+    public GameObject manger;
 
     void Start()
     {
@@ -75,6 +76,8 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
+                //manger.GetComponent<SpawningScript>
+                manger.GetComponent<EnemySpawner>().destroyEnemy();
                 Destroy(gameObject);
             }
         }
