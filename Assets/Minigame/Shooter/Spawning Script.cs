@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 2f;
 
     public int points; // points added when enemy dies
-    public int difficultyWC; //amount of points needed to win
+    public int[] difficultyWC; //amount of points needed to win
     public int level; //0-2
     public GameObject Master;
     public Animator animator;
