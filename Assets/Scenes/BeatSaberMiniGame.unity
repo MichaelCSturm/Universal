@@ -149,10 +149,13 @@ MonoBehaviour:
   LeftLegTrigger: {fileID: 458485469}
   Hitbox: {fileID: 7220452494193756791, guid: 22f4bc5d5db1bb54db2b7c2a2e5a3dfe, type: 3}
   animator: {fileID: 21400841}
+  Master: {fileID: 6652759494710477810, guid: 36e9539637e569f4e89c5ffa5dac88b2, type: 3}
   speed: 0.19
   hitboxes: []
-  LimitOfBoxes: 1
+  LimitOfBoxes: 4
   timeValue: 90
+  GoodScore: 0
+  BadScore: 0
 --- !u!95 &21400841 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3213981688441785487, guid: da695f8d935f9c8499628c7a20663284, type: 3}
