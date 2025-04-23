@@ -133,14 +133,10 @@ public class BeatSaberManager : MonoBehaviour
       
         
 
-        //Wait for 4 seconds
+        //Wait for waitTime amount of seconds
         float waitTime = 1;
         CreateHitBox();
-
-        //thisbox = Instantiate(Hitbox, new Vector3(0, 0, 0), Quaternion.identity);
-        //hitboxes.Add(thisbox);
-
-        //Wait for 2 seconds
+        
         waitTime = 1;
         yield return wait(waitTime);
 
