@@ -12,12 +12,14 @@ public class TowardsExit : MonoBehaviour
     public GameObject constructController;
     public ConstructController Controller;
 
+    private Rigidbody rb;
+
     void Start()
     {
         // Find the ConstructController in the scene
         //constructController = FindObjectOfType<ConstructController>();
         Controller = constructController.GetComponent<ConstructController>();
-
+        rb = GetComponent<Rigidbody>();
 
         if (Controller != null)
         {
@@ -35,12 +37,13 @@ public class TowardsExit : MonoBehaviour
         // Choose a random target to go towards (optional, can be set by external script)
         findTarget();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (chosenTarget != null)
         {
             var step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, chosenTarget.position, step); 
+            Vector3 newPosition = Vector3.MoveTowards(rb.position, chosenTarget.position, step);
+            rb.MovePosition(newPosition);
 
         }
         if (Vector3.Distance(transform.position, chosenTarget.position) < 0.001f)
