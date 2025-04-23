@@ -7,6 +7,7 @@ public class ConstructController : MonoBehaviour
     public int points;
     public int[] difficultyWC; //win condition
     public int level; 
+
     public GameObject[] startingGuys;
     public int[] maxGuys;
     private int guys = 0;
@@ -14,11 +15,13 @@ public class ConstructController : MonoBehaviour
 
     public GameObject[] targets;
 
-    private Transform chosenTarget;
+    //private Transform chosenTarget;
     public Animator animator;
     public GameObject Master;
     Master MainMaster;
     private int levelToLoad;
+
+    public GameObject Controller;
 
     // Start is called before the first frame update
     void Start()
@@ -54,15 +57,31 @@ public class ConstructController : MonoBehaviour
             guys++; 
 
             TowardsExit te = newGuy.GetComponent<TowardsExit>();
-        if (te != null)
-        {
-            te.target = targets; 
-            te.findTarget();
+            if (te != null)
+            {
+                te.constructController = Controller;
+                // Assign targets (e.g., array of possible targets)
+                te.target = targets;
+
+                // Assign the ConstructController to te
+                //te.constructController = Controller;
+
+                // Call findTarget to make sure te has a target
+                te.findTarget();
+            }
+            else
+            {
+                Debug.LogError("te (TowardsExit instance) is null!");
+            }
+
+            yield return new WaitForSeconds(randomTime);
         }
 
-        yield return new WaitForSeconds(randomTime);
-        }
+    }
 
+    public void AddPoint()
+    {
+        points++;
     }
 }
 
