@@ -48,6 +48,11 @@ public class EnemySpawner : MonoBehaviour
     }
     public void destroyEnemy(EnemyType type)
     {
+        // Guide to update the global score:
+        //
+        // Call MainMaster.AddToScore(1);
+        //
+        // Do not access the singleton itself utilize the MainMaster
         switch (type)
         {
             case EnemyType.Tough:

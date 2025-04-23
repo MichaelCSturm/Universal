@@ -12,6 +12,7 @@ public class RunController : MonoBehaviour
     public float speed;
     Master MainMaster;
     private int levelToLoad;
+    private bool once = true;
     private void Start()
     {
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
@@ -54,10 +55,16 @@ public class RunController : MonoBehaviour
     private void AddPoints()
     {
         points++;
-
-        if(points >= winThreshold[level])
+        // Guide to update the global score:
+        //
+        // Call MainMaster.AddToScore(1);
+        //
+        // Do not access the singleton itself utilize the MainMaster
+        //
+        if (points >= winThreshold[level] && once)
         {
             GameWin();
+            once = false;
         }
     }
 
@@ -68,6 +75,12 @@ public class RunController : MonoBehaviour
     private void GameWin()
     {
         Debug.Log("Ayo you win");
+        //
+        //  Here's a guide on how to swap to the next scene its pretty simple. Just call the MainManger to the scene you want to switch to
+        //
+        //      For example:
+        //      MainMaster.FadeToLevel(1);
+        //
     }
 }
 
