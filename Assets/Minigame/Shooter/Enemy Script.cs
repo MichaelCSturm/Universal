@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 //manger.GetComponent<SpawningScript>
-                manger.GetComponent<EnemySpawner>().destroyEnemy();
+                manger.GetComponent<EnemySpawner>().destroyEnemy(type);
                 Destroy(gameObject);
             }
         }

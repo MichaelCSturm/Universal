@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     public int PointsToWin;
     public GameObject selfManager;
     public int destroyedEnemys = 0;
+    private bool startLoadingLevel = true;
     
 
 
@@ -33,18 +35,34 @@ public class EnemySpawner : MonoBehaviour
     }
     public void Update()
     {
-        if (points >= PointsToWin)// WIN CON RIGHT HERE
+        if (points >= PointsToWin && startLoadingLevel)// WIN CON RIGHT HERE
         {
             print(" AY WE WINNING SWITCHING TO THE NEXT SCENE");
             MainMaster.FadeToLevel(2);
+            startLoadingLevel = false;
         }
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {
         MainMaster.OnFadeComplete();
     }
-    public void destroyEnemy()
+    public void destroyEnemy(EnemyType type)
     {
+        switch (type)
+        {
+            case EnemyType.Tough:
+                points = points + 15;
+                MainMaster.AddToScore(15);
+                break;
+            case EnemyType.FinalBoss:
+                points = points + 40;
+                MainMaster.AddToScore(40);
+                break;
+            default:
+                points = points + 1;
+                MainMaster.AddToScore(1);
+                break;
+        }
         destroyedEnemys = destroyedEnemys + 1;
         print(MainMaster.TimeManager().ToString());
     }
