@@ -33,7 +33,7 @@ public class Master : MonoBehaviour
         Singleton.Instance.ElapsedTime += Time.deltaTime;
     }
     public float TimeManager()
-    { 
+    {
         return Singleton.Instance.ElapsedTime;
     }
     public void Update()
