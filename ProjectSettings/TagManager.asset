@@ -16,6 +16,7 @@ TagManager:
   - Destroy
   - target
   - enemy
+  - Breakable
   layers:
   - Default
   - TransparentFX
