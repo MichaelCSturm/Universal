@@ -7094,6 +7094,11 @@ MonoBehaviour:
     ikTarget: {fileID: 4596199269715584111}
     trackingPositionOffset: {x: -0.03, y: -0.19, z: -0.04}
     trackingRotationOffset: {x: 0, y: 0, z: -39.9}
+  waist:
+    vrTarget: {fileID: 3730039067359590123}
+    ikTarget: {fileID: 6999368227851961886}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 90, z: 0}
   leftLeg:
     vrTarget: {fileID: 7258818094106808344}
     ikTarget: {fileID: 3461638271789536678}
@@ -7104,12 +7109,8 @@ MonoBehaviour:
     ikTarget: {fileID: 7259663406571818192}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
-  waist:
-    vrTarget: {fileID: 3730039067359590123}
-    ikTarget: {fileID: 6999368227851961886}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 90, z: 0}
   waistBodyPositionOffset: {x: 0, y: 0, z: 0}
+  headBodyYawOffset: 0
 --- !u!114 &6709201466983639928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7336,7 +7337,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9028665ee591b644e8d0364cab815828, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8596,7 +8597,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf713be601b6ffe4982f56f0d42a0ce8, type: 2}
+  - {fileID: 2100000, guid: 9028665ee591b644e8d0364cab815828, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
