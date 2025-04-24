@@ -33,12 +33,33 @@ public class Master : MonoBehaviour
         Singleton.Instance.ElapsedTime += Time.deltaTime;
     }
     public float TimeManager()
-    { 
+    {
         return Singleton.Instance.ElapsedTime;
     }
     public void Update()
     {
         Timer();
+    }
+    public void IncreaseLevelAndLoadNextScene(int levelIndex)
+    {
+        Singleton.Instance.IncreaseLevel();
+        FadeToLevel(levelIndex);
+    }
+    public void ResetHealth()
+    {
+        Singleton.Instance.ResetHealth();
+    }
+    public void FailLevel()
+    {
+        Singleton.Instance.SubtractHealth();
+        if (Singleton.Instance.Health <= 0)
+        {
+            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0\n\n\n Impliment a system in Master FailLevel to swap to a menu scene");
+            Singleton.Instance.ResetHealth();
+            Singleton.Instance.ResetLevel();
+            Singleton.Instance.ResetTimer();
+        }
+
     }
 
 

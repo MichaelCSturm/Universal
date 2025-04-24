@@ -19,7 +19,8 @@ public class FractureScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //toggle solid
-        Full.SetActive(false);
+        //Full.SetActive(false);
+        Destroy(Full);
 
         //toggle break apart
         fractureVariant.SetActive(true);
