@@ -8,6 +8,9 @@ public class Singleton
     public bool IsRunning;
     public float ElapsedTime;
     public int Score;
+    public int Level;
+    public int Health;
+    private int OrignalHealth;
     private Singleton() 
     {
         ElapsedTime = 0;
@@ -15,6 +18,12 @@ public class Singleton
         IsRunning = true;
 
         Score = 0;
+
+        Level = 0;
+
+        Health = 3;
+
+        OrignalHealth = Health;
     }
 
     public static Singleton Instance
@@ -47,6 +56,14 @@ public class Singleton
             ElapsedTime += Time.deltaTime;
         }
     }
+    public void ResetLevel()
+    {
+        Level = 0;
+    }
+    public void IncreaseLevel()
+    {
+        Level = Level + 1;
+    }
 
     public void StartTimer()
     {
@@ -61,5 +78,13 @@ public class Singleton
     public void ResetTimer()
     {
         ElapsedTime = 0f;
+    }
+    public void SubtractHealth()
+    {
+        Health = Health - 1;
+    }
+    public void ResetHealth()
+    {
+        Health = OrignalHealth;
     }
 }
