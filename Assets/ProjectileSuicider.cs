@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ProjectileSuicider : MonoBehaviour
 {
-    public float destroyAfterThisDistance = 5.0f;
+    public float destroyAfterThisTime = 5.0f;
     // Update is called once per frame
     void Start()
     {
-        Destroy(gameObject, destroyAfterThisDistance);
+        Destroy(gameObject, destroyAfterThisTime);
     }
 }

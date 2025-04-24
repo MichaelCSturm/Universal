@@ -7,18 +7,22 @@ public class ConstructController : MonoBehaviour
     public int points;
     public int[] difficultyWC; //win condition
     public int level; 
-    public GameObject[] startingGuys;
+
+    public GameObject startingGuys;
     public int[] maxGuys;
     private int guys = 0;
     public float speed = 1.0f;
 
     public GameObject[] targets;
+    public GameObject[] startLocations;
 
-    private Transform chosenTarget;
+    //private Transform chosenTarget;
     public Animator animator;
     public GameObject Master;
     Master MainMaster;
     private int levelToLoad;
+
+    public GameObject Controller;
 
     // Start is called before the first frame update
     void Start()
@@ -47,24 +51,45 @@ public class ConstructController : MonoBehaviour
     {   
         while (guys <= maxGuys[level])
         {
-            int randomGuy = Random.Range(0, startingGuys.Length);
-            float randomTime = Random.Range(10f, 15f); 
-
-            GameObject newGuy = Instantiate(startingGuys[randomGuy]);
+            float randomTime = Random.Range(10f, 15f);
+            int randomStart = Random.Range(0, startLocations.Length);
+            GameObject newGuy = Instantiate(startingGuys, startLocations[randomStart].transform.position, startLocations[randomStart].transform.rotation);
             guys++; 
 
             TowardsExit te = newGuy.GetComponent<TowardsExit>();
-        if (te != null)
-        {
-            te.target = targets; 
-            te.findTarget();
-        }
+            if (te != null)
+            {
+                te.constructController = Controller;
+                // Assign targets (e.g., array of possible targets)
+                te.target = targets;
 
-        yield return new WaitForSeconds(randomTime);
+                // Assign the ConstructController to te
+                //te.constructController = Controller;
+
+                // Call findTarget to make sure te has a target
+                te.findTarget();
+            }
+            else
+            {
+                Debug.LogError("te (TowardsExit instance) is null!");
+            }
+
+            yield return new WaitForSeconds(randomTime);
         }
 
     }
+
+    public void AddPoint()
+    {
+        points++;
+    }
+    public void killGuy()
+    {
+        guys--;
+    }
+        
 }
+
 
     
 
