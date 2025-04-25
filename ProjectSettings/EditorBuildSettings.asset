@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestHandsScene 1.unity
     guid: cadfa97dbe3122949b104f664e2a22a6
+  - enabled: 1
+    path: Assets/Scenes/BeatSaberMiniGame.unity
+    guid: 80e95e7562e9b5044bc48d5ef0f967de
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e0a1aef329dd211408158a1ef65cc553, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 17e8433c254ec074bb82b10c40b54416, type: 2}
