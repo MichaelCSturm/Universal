@@ -16,16 +16,25 @@ public class DanceManager : MonoBehaviour
     public Material strobeLight;
     bool quit = false;
     bool running = true;
-    public GameObject uiCircle;
-    
+    public GameObject hip;
+
     // Start is called before the first frame update
 
+
+
+    ////////
+    //          Speed should NOT set lower than  .3
+    //
+    //
+    //          if done it could give someone a cesure
+    ////////
+    //
     int xcount = 1;
     public float timeValue = 90;
     void Start()
     {
         
-        GameObject circ = Instantiate(uiCircle, new Vector3(0, 0, 0), new Quaternion(0, 90, -90, 0));
+        //GameObject circ = Instantiate(uiCircle, new Vector3(0, 0, 0), new Quaternion(0, 90, -90, 0));
         strobeLight.color = new Color(0f, 0f, 0f);
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
@@ -56,43 +65,45 @@ public class DanceManager : MonoBehaviour
     public void dance()
     {
         
-        int xcountnew = Random.Range(1, 6);/////// _________________ This makes it so the same dance move does't happend twice in a row
+        int xcountnew = Random.Range(0, 6);/////// _________________ This makes it so the same dance move does't happend twice in a row
         do
         {
 
-            xcountnew = Random.Range(1, 6);
+            xcountnew = Random.Range(0, 6);
 
         } while (xcountnew == xcount);
         xcount = xcountnew;
+        //print(xcount);
         switch (xcount)
         {
+            case 0:
+                characterAnimator.Play(listOfAnimations[xcount]);
+                break;
             case 1:
                 characterAnimator.Play(listOfAnimations[xcount]);
                 break;
             case 2:
                 characterAnimator.Play(listOfAnimations[xcount]);
                 break;
+            
             case 3:
                 characterAnimator.Play(listOfAnimations[xcount]);
                 break;
-            
             case 4:
                 characterAnimator.Play(listOfAnimations[xcount]);
                 break;
             case 5:
                 characterAnimator.Play(listOfAnimations[xcount]);
                 break;
-            case 6:
-                characterAnimator.Play(listOfAnimations[xcount]);
-                break;
             default:
                 characterAnimator.Play("Armature|movehandsTest");
+                print("error");
                 break;
         }
     }
     public void testDance(float time)
     {
-        GameObject ObjectMaster = Instantiate(uiCircle, new Vector3(0, 0, 0), new Quaternion(0, 180, 90, 0));
+        //GameObject ObjectMaster = Instantiate(uiCircle, new Vector3(0, 0, 0), new Quaternion(0, 180, 90, 0));
         
         //float orignalTime = time;
         //while (time > 0)
@@ -108,6 +119,7 @@ public class DanceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       // print(hip.transform.position);
         if (running)
         {
             StartCoroutine(waiter());
@@ -119,7 +131,7 @@ public class DanceManager : MonoBehaviour
 
         running = false;
         //Wait for waitTime amount of seconds
-        float waitTime = 1.5f;
+        float waitTime = speed;
         yield return wait(waitTime);
         trafficLightRed();
         //waitTime = 1;
