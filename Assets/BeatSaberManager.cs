@@ -120,7 +120,7 @@ public class BeatSaberManager : MonoBehaviour
                     MainMaster.AddToScore(1);
                     print(MainMaster.ReturnScore().ToString());
                     print(MainMaster.TimeManager().ToString());
-                    MainMaster.FadeToLevel(1);
+                    //MainMaster.FadeToLevel(1);
                 }
                 Destroy(hitboxes[0]);
                 hitboxes.RemoveAt(0);
