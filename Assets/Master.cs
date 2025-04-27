@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using System.IO;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 
 public class Master : MonoBehaviour
@@ -15,42 +17,10 @@ public class Master : MonoBehaviour
     public int levelToLoad;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
-    public List<string> ReadScore()
-    {
-        if (File.Exists(filename))
-        {
-            var sr = File.OpenText(filename);
-            var line = sr.ReadLine();
-           // List<string> linesList = new List<string>();
-
-            while (line != null)
-            {
-                Debug.Log(line); // prints each line of the file
-                line = sr.ReadLine();
-                linesList.Add(line);
-            }
-            return linesList;
-        }
-        else
-        {
-            Debug.Log("Could not Open the file: " + filename + " for reading.");
-            return new List<string>();
-        }
-    }
+   
     public void Start()
     {
-        if (File.Exists(filename))
-        {
-            Debug.Log(filename + " already exists.");
-            return;
-        }
-        var sr = File.CreateText(filename);
-        sr.Close();
-        List<string> strings = ReadScore();
-        foreach (string s in strings)
-        {
-            print(s);
-        }
+        
     }
     public void FadeToLevel(int levelIndex)
     {
@@ -66,9 +36,12 @@ public class Master : MonoBehaviour
     {
         if (File.Exists(filename))
         {
-            var sr = new StreamWriter(filename);
-            var score = ReturnScore().ToString();
-            sr.WriteLine(score);
+            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(path, FileMode.OpenOrCreate);
+            string score = "9999";
+            byte[] writeArr = Encoding.UTF8.GetBytes(score);
+            file.Write(writeArr, 0, score.Length);
         }
         else
         {
@@ -109,7 +82,9 @@ public class Master : MonoBehaviour
         Singleton.Instance.SubtractHealth();
         if (Singleton.Instance.Health <= 0)
         {
+            var score = ReturnScore().ToString() ;
             print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0\n\n\n Impliment a system in Master FailLevel to swap to a menu scene");
+            Console.WriteLine(score, "your score");
             Singleton.Instance.ResetHealth();
             Singleton.Instance.ResetLevel();
             Singleton.Instance.ResetTimer();

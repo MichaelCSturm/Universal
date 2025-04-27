@@ -5,6 +5,7 @@ using static UnityEditor.FilePathAttribute;
 
 public class BeatSaberManager : MonoBehaviour
 {
+    public bool debugMode;
     public GameObject SpawnPoint1;
     public GameObject SpawnPoint2;
     public GameObject SpawnPoint3;
@@ -93,7 +94,7 @@ public class BeatSaberManager : MonoBehaviour
             }
             if (hitboxes[0].transform.position.z > 4 && LimitOfBoxes >hitboxes.Count)
             {
-                StartCoroutine(waiter());
+                StartCoroutine(waiterr());
                 //triggerOnce = false;
                 
             }
@@ -128,7 +129,7 @@ public class BeatSaberManager : MonoBehaviour
 
     }
 
-    IEnumerator waiter()
+    IEnumerator waiterr()
     {
       
         
@@ -138,12 +139,12 @@ public class BeatSaberManager : MonoBehaviour
         CreateHitBox();
         
         waitTime = 1;
-        yield return wait(waitTime);
+        yield return waitt(waitTime);
 
         
     }
 
-    IEnumerator wait(float waitTime)
+    IEnumerator waitt(float waitTime)
     {
         float counter = 0;
 

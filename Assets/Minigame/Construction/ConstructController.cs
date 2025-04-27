@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConstructController : MonoBehaviour
 {
+    public bool debugMode;
     public int points;
     public int[] difficultyWC; //win condition
     public int level; 
