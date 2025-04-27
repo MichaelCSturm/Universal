@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using System.IO;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Linq;
 
 
 public class Master : MonoBehaviour
@@ -13,44 +16,14 @@ public class Master : MonoBehaviour
     public string filename = "MyScore.txt";
     public Animator animator;
     public int levelToLoad;
+    public bool debugmode = false;
+    private bool once = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
-    public List<string> ReadScore()
-    {
-        if (File.Exists(filename))
-        {
-            var sr = File.OpenText(filename);
-            var line = sr.ReadLine();
-           // List<string> linesList = new List<string>();
-
-            while (line != null)
-            {
-                Debug.Log(line); // prints each line of the file
-                line = sr.ReadLine();
-                linesList.Add(line);
-            }
-            return linesList;
-        }
-        else
-        {
-            Debug.Log("Could not Open the file: " + filename + " for reading.");
-            return new List<string>();
-        }
-    }
+   
     public void Start()
     {
-        if (File.Exists(filename))
-        {
-            Debug.Log(filename + " already exists.");
-            return;
-        }
-        var sr = File.CreateText(filename);
-        sr.Close();
-        List<string> strings = ReadScore();
-        foreach (string s in strings)
-        {
-            print(s);
-        }
+        
     }
     public void FadeToLevel(int levelIndex)
     {
@@ -62,17 +35,74 @@ public class Master : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
     }
     //public static Singleton Instance { get; private set; }
-    public void SaveScore()
+    public string GetHighScores()
     {
-        if (File.Exists(filename))
+        string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+
+        if (File.Exists(path))
         {
-            var sr = new StreamWriter(filename);
-            var score = ReturnScore().ToString();
-            sr.WriteLine(score);
+            //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+            print(path);
+            using var sr = new StreamReader(path);
+            string line;
+            List<string> lines = new List<string>();
+            while ((line = sr.ReadLine()) != null)
+            {
+                lines.Add(line);
+            }
+            int greatestnum = 0;
+            foreach (string num in lines)
+            {
+                int number = int.Parse(num);
+                if (number > greatestnum)
+                {
+                    greatestnum = number;
+                }
+            }
+            return greatestnum.ToString();
         }
         else
         {
-            print("EY WE DONT HAVE THAT FILE FOR SOME REASON");
+            return "0";
+        }
+    }
+    public void SaveScore()
+    {
+        if (once)
+        {
+            once = false;
+            //print(File.Exists(filename));
+            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+
+            if (File.Exists(path))
+            {
+                //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+                print(path);
+                BinaryFormatter bf = new BinaryFormatter();
+                using FileStream file = File.Open(path, FileMode.Append);
+                using var sr = new StreamWriter(file);
+                string myscore = ReturnScore().ToString(); 
+                print(myscore);
+                sr.WriteLine(myscore);
+
+
+                
+
+                //file.Close();
+            }
+            else
+            {
+                //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+                print(path);
+                BinaryFormatter bf = new BinaryFormatter();
+                using FileStream file = File.Create(path);
+                using var sr = new StreamWriter(file);
+                string myscore = ReturnScore().ToString();
+                print(myscore);
+                sr.WriteLine(myscore);
+
+            }
+            once = true;
         }
     }
     public int ReturnScore()
@@ -91,9 +121,28 @@ public class Master : MonoBehaviour
     {
         return Singleton.Instance.ElapsedTime;
     }
+
+
+
+    /// <summary>
+    ///  HERE BE DEBUG MODE
+    /// </summary>
+
+
+
     public void Update()
     {
         Timer();
+        if (debugmode)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //FailLevel();
+                print(GetHighScores());
+            }
+
+        }
+        
     }
     public void IncreaseLevelAndLoadNextScene(int levelIndex)
     {
@@ -109,7 +158,9 @@ public class Master : MonoBehaviour
         Singleton.Instance.SubtractHealth();
         if (Singleton.Instance.Health <= 0)
         {
-            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0\n\n\n Impliment a system in Master FailLevel to swap to a menu scene");
+            var score = ReturnScore().ToString() ;
+            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0 Impliment a system in Master FailLevel to swap to a menu scene");
+           // Console.WriteLine(score, "your score");
             Singleton.Instance.ResetHealth();
             Singleton.Instance.ResetLevel();
             Singleton.Instance.ResetTimer();

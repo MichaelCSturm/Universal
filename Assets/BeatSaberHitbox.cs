@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeatSaberHitbox : Hitbox
 {
     public ParticleSystem system;
-    private bool hit = false;
+    //private bool hit = false;
     void Update()
     {
         if (hit)

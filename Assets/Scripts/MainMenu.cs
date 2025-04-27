@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public bool debugMode;
     public Animator animator;
     public GameObject Master;
     //public float speed;
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
     }
 

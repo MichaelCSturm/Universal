@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DanceManager : MonoBehaviour
 {
+    public bool debugMode;
     public Animator animator;
     public GameObject Master;
     public float speed;
@@ -43,6 +44,7 @@ public class DanceManager : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
         // MainMaster.startTimer();
     }

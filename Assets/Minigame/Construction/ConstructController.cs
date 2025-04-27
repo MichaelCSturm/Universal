@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConstructController : MonoBehaviour
 {
+    public bool debugMode;
     public int points;
     public int[] difficultyWC; //win condition
     public int level; 
@@ -34,6 +35,7 @@ public class ConstructController : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
         StartCoroutine(SpawnGuys());
     }
