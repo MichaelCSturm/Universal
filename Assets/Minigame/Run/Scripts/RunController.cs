@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RunController : MonoBehaviour
 {
+    public bool debugMode;
+
     int points;
     public int level;
     public int[] winThreshold; //made this public so we can adjust it to whatever feels most natural
@@ -21,6 +23,7 @@ public class RunController : MonoBehaviour
         if (animator != null)
         {
             MainMaster.animator = animator;
+            MainMaster.debugmode = debugMode;
             MainMaster.levelToLoad = levelToLoad;
         }
         points = 0;
