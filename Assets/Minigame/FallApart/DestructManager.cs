@@ -21,6 +21,7 @@ public class DestructManager : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
         totalBreakables = GameObject.FindGameObjectsWithTag("Breakable").Length;
         if (totalBreakables == 0)

@@ -35,6 +35,7 @@ public class ConstructController : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
         StartCoroutine(SpawnGuys());
     }

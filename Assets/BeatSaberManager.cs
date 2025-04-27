@@ -75,6 +75,7 @@ public class BeatSaberManager : MonoBehaviour
         {
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
         }
         // MainMaster.startTimer();
         CreateHitBox();

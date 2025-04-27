@@ -7,6 +7,7 @@ using System.IO;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Linq;
 
 
 public class Master : MonoBehaviour
@@ -15,6 +16,8 @@ public class Master : MonoBehaviour
     public string filename = "MyScore.txt";
     public Animator animator;
     public int levelToLoad;
+    public bool debugmode = false;
+    private bool once = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
    
@@ -32,20 +35,74 @@ public class Master : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
     }
     //public static Singleton Instance { get; private set; }
-    public void SaveScore()
+    public string GetHighScores()
     {
-        if (File.Exists(filename))
+        string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+
+        if (File.Exists(path))
         {
-            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(path, FileMode.OpenOrCreate);
-            string score = "9999";
-            byte[] writeArr = Encoding.UTF8.GetBytes(score);
-            file.Write(writeArr, 0, score.Length);
+            //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+            print(path);
+            using var sr = new StreamReader(path);
+            string line;
+            List<string> lines = new List<string>();
+            while ((line = sr.ReadLine()) != null)
+            {
+                lines.Add(line);
+            }
+            int greatestnum = 0;
+            foreach (string num in lines)
+            {
+                int number = int.Parse(num);
+                if (number > greatestnum)
+                {
+                    greatestnum = number;
+                }
+            }
+            return greatestnum.ToString();
         }
         else
         {
-            print("EY WE DONT HAVE THAT FILE FOR SOME REASON");
+            return "0";
+        }
+    }
+    public void SaveScore()
+    {
+        if (once)
+        {
+            once = false;
+            //print(File.Exists(filename));
+            string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+
+            if (File.Exists(path))
+            {
+                //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+                print(path);
+                BinaryFormatter bf = new BinaryFormatter();
+                using FileStream file = File.Open(path, FileMode.Append);
+                using var sr = new StreamWriter(file);
+                string myscore = ReturnScore().ToString(); 
+                print(myscore);
+                sr.WriteLine(myscore);
+
+
+                
+
+                //file.Close();
+            }
+            else
+            {
+                //string path = Application.persistentDataPath + Path.DirectorySeparatorChar + filename;
+                print(path);
+                BinaryFormatter bf = new BinaryFormatter();
+                using FileStream file = File.Create(path);
+                using var sr = new StreamWriter(file);
+                string myscore = ReturnScore().ToString();
+                print(myscore);
+                sr.WriteLine(myscore);
+
+            }
+            once = true;
         }
     }
     public int ReturnScore()
@@ -64,9 +121,28 @@ public class Master : MonoBehaviour
     {
         return Singleton.Instance.ElapsedTime;
     }
+
+
+
+    /// <summary>
+    ///  HERE BE DEBUG MODE
+    /// </summary>
+
+
+
     public void Update()
     {
         Timer();
+        if (debugmode)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //FailLevel();
+                print(GetHighScores());
+            }
+
+        }
+        
     }
     public void IncreaseLevelAndLoadNextScene(int levelIndex)
     {
@@ -83,8 +159,8 @@ public class Master : MonoBehaviour
         if (Singleton.Instance.Health <= 0)
         {
             var score = ReturnScore().ToString() ;
-            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0\n\n\n Impliment a system in Master FailLevel to swap to a menu scene");
-            Console.WriteLine(score, "your score");
+            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0 Impliment a system in Master FailLevel to swap to a menu scene");
+           // Console.WriteLine(score, "your score");
             Singleton.Instance.ResetHealth();
             Singleton.Instance.ResetLevel();
             Singleton.Instance.ResetTimer();
