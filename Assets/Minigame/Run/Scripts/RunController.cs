@@ -54,6 +54,7 @@ public class RunController : MonoBehaviour
         //
         // Do not access the singleton itself utilize the MainMaster
         //
+        MainMaster.AddToScore(1);
         if (points >= winThreshold[level] && once)
         {
             GameWin();
@@ -68,6 +69,7 @@ public class RunController : MonoBehaviour
     private void GameWin()
     {
         Debug.Log("Ayo you win");
+        MainMaster.FadeToLevel(1);
         //
         //  Here's a guide on how to swap to the next scene its pretty simple. Just call the MainManger to the scene you want to switch to
         //
