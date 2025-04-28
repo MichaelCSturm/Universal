@@ -31,25 +31,18 @@ public class RunController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("Coin"))
-        {
-            if (other.gameObject.CompareTag("Player"))
+
+            if (other.CompareTag("Coin"))
             {
                 Debug.Log("Player touched: " + gameObject.name);
                 AddPoints();
                 Debug.Log("coin");
             }
-        }
-
-        if (gameObject.CompareTag("Obstacle"))
-        {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Obstacle"))
             {
                 GameOver();
                 Debug.Log("Obstacle touched");
             }
-
-        }
     }
 
     private void AddPoints()
@@ -61,6 +54,7 @@ public class RunController : MonoBehaviour
         //
         // Do not access the singleton itself utilize the MainMaster
         //
+        MainMaster.AddToScore(1);
         if (points >= winThreshold[level] && once)
         {
             GameWin();
@@ -75,6 +69,7 @@ public class RunController : MonoBehaviour
     private void GameWin()
     {
         Debug.Log("Ayo you win");
+        MainMaster.FadeToLevel(1);
         //
         //  Here's a guide on how to swap to the next scene its pretty simple. Just call the MainManger to the scene you want to switch to
         //

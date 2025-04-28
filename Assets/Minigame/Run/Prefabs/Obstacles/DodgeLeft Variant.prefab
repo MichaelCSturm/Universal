@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 6145625950438179369, guid: 7f44b62a7d383844296aa6681acdc747, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8356344693891108834, guid: 7f44b62a7d383844296aa6681acdc747, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -81,5 +85,40 @@ PrefabInstance:
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5340381309023024927, guid: 7f44b62a7d383844296aa6681acdc747, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1315946550371227749}
   m_SourcePrefab: {fileID: 100100000, guid: 7f44b62a7d383844296aa6681acdc747, type: 3}
+--- !u!1 &4325255601381940404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5340381309023024927, guid: 7f44b62a7d383844296aa6681acdc747, type: 3}
+  m_PrefabInstance: {fileID: 8510322855572958123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1315946550371227749
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325255601381940404}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
