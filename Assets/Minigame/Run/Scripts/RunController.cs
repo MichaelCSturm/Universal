@@ -31,25 +31,18 @@ public class RunController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("Coin"))
-        {
-            if (other.gameObject.CompareTag("Player"))
+
+            if (other.CompareTag("Coin"))
             {
                 Debug.Log("Player touched: " + gameObject.name);
                 AddPoints();
                 Debug.Log("coin");
             }
-        }
-
-        if (gameObject.CompareTag("Obstacle"))
-        {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Obstacle"))
             {
                 GameOver();
                 Debug.Log("Obstacle touched");
             }
-
-        }
     }
 
     private void AddPoints()
