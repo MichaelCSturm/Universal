@@ -62,13 +62,22 @@ public class ConstructController : MonoBehaviour
             if (te != null)
             {
                 te.constructController = Controller;
-                // Assign targets (e.g., array of possible targets)
+            
                 te.target = targets;
 
-                // Assign the ConstructController to te
-                //te.constructController = Controller;
+                if(randomStart <= 3)
+                {
+                    te.TB = true;
+                }
+                else
+                {
+                    te.TB = false;
+                }
 
-                // Call findTarget to make sure te has a target
+            
+
+                te.speed = speed;
+
                 te.findTarget();
             }
             else

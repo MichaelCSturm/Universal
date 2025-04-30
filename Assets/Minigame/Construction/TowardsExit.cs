@@ -13,6 +13,7 @@ public class TowardsExit : MonoBehaviour
     public ConstructController Controller;
     private Color ogColor;
     private Rigidbody rb;
+    public bool TB;
 
     void Start()
     {
@@ -49,11 +50,20 @@ public class TowardsExit : MonoBehaviour
             {
                 targetRenderer.material.color = myColor;
             }
+
+             Vector3 direction = (chosenTarget.position - transform.position).normalized;
+        direction.y = 0f; // ignore vertical difference
+        if (direction != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, speed * Time.deltaTime);
+        }
+
             var step = speed * Time.deltaTime;
             Vector3 newPosition = Vector3.MoveTowards(rb.position, chosenTarget.position, step);
             rb.MovePosition(newPosition);
 
-            if (Vector3.Distance(transform.position, chosenTarget.position) < 0.1f)
+            if (Vector3.Distance(transform.position, chosenTarget.position) < 1.0f)
             {
 
                 Controller.AddPoint();
@@ -72,8 +82,18 @@ public class TowardsExit : MonoBehaviour
     {
         if (target.Length > 0) 
         {
-            int randomIndex = Random.Range(0, target.Length); 
+            int randomIndex;
+            if(TB ==  true)
+            {
+            randomIndex = Random.Range(0, 2); 
             chosenTarget = target[randomIndex].transform;
+            }
+            else
+            {
+            randomIndex = Random.Range(2, 4); 
+            chosenTarget = target[randomIndex].transform;
+            }
+            
             ogColor = target[randomIndex].GetComponent<Renderer>().material.color;
             target[randomIndex].SetActive(true);
         }

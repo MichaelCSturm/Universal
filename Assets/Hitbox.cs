@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour
@@ -10,7 +11,8 @@ public class Hitbox : MonoBehaviour
     public GameObject RightLegTrigger;
     public GameObject LeftLegTrigger;
     public bool CheckForSpeficTrigger;
-    public GameObject SpeficTrigger;
+    //public GameObject SpeficTrigger;
+    public List<GameObject> SpeficTriggerList;
     public GameObject Manager;
     public List<GameObject> Triggers;
     //List<GameObject> goList;
@@ -32,7 +34,7 @@ public class Hitbox : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-       
+
         if (CheckForSpeficTrigger == false)
         {
             if (Triggers != null)
@@ -50,24 +52,40 @@ public class Hitbox : MonoBehaviour
                         }
                     }
                 }
-                    
+
             }
-           
+
         }
         else
         {
-            if (SpeficTrigger != null)
+            if (SpeficTriggerList.Count > 0)
             {
-                if (SpeficTrigger == other.gameObject)
+                foreach (GameObject Trigger in Triggers)
                 {
-                    print(SpeficTrigger.name);
-                    if (Manager != null)
+                    if (Trigger == other.gameObject)
                     {
-                        print("Yo sent it up stream");
+                        print(Trigger);
+
+                        hit = true;
+                        //DanceManager dscript = Manager.GetComponent<DanceManager>();
+                        //dscript.runNextArea();
+
                     }
                 }
             }
+            //    if (SpeficTrigger != null)
+            //    {
+            //        if (SpeficTrigger == other.gameObject)
+            //        {
+            //            print(SpeficTrigger.name);
+            //            if (Manager != null)
+            //            {
+            //                print("Yo sent it up stream");
+            //            }
+            //        }
+            //    }
+            //}
+
         }
-        
     }
 }

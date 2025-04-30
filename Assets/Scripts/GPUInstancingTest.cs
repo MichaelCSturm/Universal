@@ -16,7 +16,7 @@ public class GPUInstancingTest : MonoBehaviour {
 			t.SetParent(transform);
 
 			properties.SetColor(
-				"_Color", new Color(Random.value, Random.value, Random.value)
+				"_Color",new Color(Random.value, Random.value, Random.value)
 			);
 
 			MeshRenderer r = t.GetComponent<MeshRenderer>();

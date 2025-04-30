@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Minigame/MainMenu.unity
     guid: d93eb93b479a3384fa7047d00cdd2e9b
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TestHandsScene 1.unity
     guid: cadfa97dbe3122949b104f664e2a22a6
   - enabled: 1
-    path: Assets/Scenes/Shooter.unity
+    path: Assets/Minigame/Shooter/Shooter.unity
     guid: 718fc6a1b2f12954d872ec7b33a4b1a5
   - enabled: 1
-    path: Assets/Scenes/Run.unity
+    path: Assets/Minigame/Run/Run.unity
     guid: 5926553dd3ee2774aa57c486cb138828
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e0a1aef329dd211408158a1ef65cc553, type: 2}
