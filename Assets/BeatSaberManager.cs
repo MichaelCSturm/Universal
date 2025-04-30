@@ -6,9 +6,11 @@ using static UnityEditor.FilePathAttribute;
 public class BeatSaberManager : MonoBehaviour
 {
     public bool debugMode;
-    public GameObject SpawnPoint1;
-    public GameObject SpawnPoint2;
-    public GameObject SpawnPoint3;
+    public GameObject RightHandSpawnPoint;
+    public GameObject LeftHandSpawnPoint;
+    public GameObject RightLegSpawnPoint;
+    public GameObject LeftLegSpawnPoint;
+    public GameObject GeneralSpawnPoint;
     public GameObject HeadTrigger;
     public GameObject RightArmTrigger;
     public GameObject LeftArmTrigger;
@@ -40,31 +42,85 @@ public class BeatSaberManager : MonoBehaviour
         int xcount = Random.Range(num1, num2);
         return xcount;
     }
+    void randomBox(GameObject whichbox, Vector3 Location)
+    {
+        GameObject thisbox;
+        int chosenbox = getRandomNumber(1, 10);
+        if (chosenbox > 8) // 80% chance to create a box ment for that spot
+        {
+           chosenbox = getRandomNumber(1, 10);
+            thisbox = Instantiate(Hitbox, Location, Quaternion.identity);
+            hitboxes.Add(thisbox);
+            thisbox.GetComponent<BeatSaberHitbox>().HeadTrigger = HeadTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().RightArmTrigger = RightArmTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().LeftArmTrigger = LeftArmTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
+        }
+        else
+        {
+            thisbox = Instantiate(whichbox, Location, Quaternion.identity);
+            hitboxes.Add(thisbox);
+            thisbox.GetComponent<BeatSaberHitbox>().HeadTrigger = HeadTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().RightArmTrigger = RightArmTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().LeftArmTrigger = LeftArmTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
+            thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
+            thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(RightArmTrigger);
+            thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(LeftArmTrigger);
+        }
+    }
     void CreateHitBox()
     {
         Vector3 Location = new Vector3(0, 0, 0);
-        int xcount = getRandomNumber(1, 3);
+        int xcount = getRandomNumber(1, 5);
         switch(xcount)
         {
             case 1:
-                Location = SpawnPoint1.transform.position;
+                Location = RightHandSpawnPoint.transform.position;
                 break;
             case 2:
-                Location = SpawnPoint2.transform.position;
+                Location = LeftHandSpawnPoint.transform.position;
                 break;
             case 3:
-                Location = SpawnPoint3.transform.position;
+                Location = RightLegSpawnPoint.transform.position;
+                break;
+            case 4:
+                Location = LeftLegSpawnPoint.transform.position;
+                break;
+            case 5:
+                Location = GeneralSpawnPoint.transform.position;
                 break;
             default:
                 break;
         }
 
-        int chosenbox = getRandomNumber(1, 3);
+        
 
-        GameObject thisbox;
-        switch (chosenbox)
+        
+        switch (xcount)
         {
             case 1:
+
+                randomBox(HandHitbox, Location);
+                break;
+                
+            case 2:
+                randomBox(HandHitbox, Location);
+                break;
+
+                
+            case 3:
+                randomBox(FeetHitbox, Location);
+                break;
+            case 4:
+                randomBox(FeetHitbox, Location);
+
+                break;
+            case 5:
+                GameObject thisbox;
                 thisbox = Instantiate(Hitbox, Location, Quaternion.identity);
                 hitboxes.Add(thisbox);
                 thisbox.GetComponent<BeatSaberHitbox>().HeadTrigger = HeadTrigger;
@@ -73,30 +129,6 @@ public class BeatSaberManager : MonoBehaviour
                 thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
                 thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
                 thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
-                break;
-            case 2:
-                thisbox = Instantiate(FeetHitbox, Location, Quaternion.identity);
-                hitboxes.Add(thisbox);
-                thisbox.GetComponent<BeatSaberHitbox>().HeadTrigger = HeadTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().RightArmTrigger = RightArmTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().LeftArmTrigger = LeftArmTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
-                thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(RightLegTrigger);
-                thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(LeftLegTrigger);
-                break;
-            case 3:
-                thisbox = Instantiate(HandHitbox, Location, Quaternion.identity);
-                hitboxes.Add(thisbox);
-                thisbox.GetComponent<BeatSaberHitbox>().HeadTrigger = HeadTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().RightArmTrigger = RightArmTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().LeftArmTrigger = LeftArmTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().RightLegTrigger = RightLegTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().LeftLegTrigger = LeftLegTrigger;
-                thisbox.GetComponent<BeatSaberHitbox>().Manager = Master;
-                thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(RightArmTrigger);
-                thisbox.GetComponent<BeatSaberHitbox>().SpeficTriggerList.Add(LeftArmTrigger);
                 break;
             default:
                 break;
