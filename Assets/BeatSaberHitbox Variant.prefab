@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.926309
       objectReference: {fileID: 0}
@@ -47,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813223274013399024, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5197300293860789940, guid: 303c10706adb0d846a6c78d608c99067, type: 3}
       propertyPath: m_Name
@@ -90,8 +106,9 @@ MonoBehaviour:
   RightLegTrigger: {fileID: 0}
   LeftLegTrigger: {fileID: 0}
   CheckForSpeficTrigger: 0
-  SpeficTrigger: {fileID: 0}
+  SpeficTriggerList: []
   Manager: {fileID: 0}
+  Triggers: []
   hit: 0
   system: {fileID: 3491412107667126276}
 --- !u!198 &3491412107667126276

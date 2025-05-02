@@ -44,8 +44,8 @@ public class MainMenu : MonoBehaviour
     {
         MainMaster.FadeToLevel(index);
     }
-    public void TutorialViewer()
+    public void StartButton()
     {
-
+        print("HEYYYE");
     }
 }
