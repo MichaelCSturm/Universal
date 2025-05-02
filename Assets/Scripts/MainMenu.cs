@@ -12,7 +12,11 @@ public class MainMenu : MonoBehaviour
     //public float speed;
     Master MainMaster;
     private int levelToLoad;
+
     //public GameObject score;
+
+    public GameObject score;
+
     public TextMeshProUGUI textMeshProUGUI;
     void Start()
     {
@@ -26,7 +30,9 @@ public class MainMenu : MonoBehaviour
             MainMaster.debugmode = debugMode;
         }
         string HighScore = MainMaster.GetHighScores();
-        // TextMeshPro scoreText = score.GetComponent<TextMeshPro>();
+
+        
+
         string realText = "High Score " + HighScore;
         textMeshProUGUI.text = realText;
     }
