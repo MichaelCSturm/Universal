@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     //public float speed;
     Master MainMaster;
     private int levelToLoad;
-    public GameObject score;
+    //public GameObject score;
     public TextMeshProUGUI textMeshProUGUI;
     void Start()
     {
