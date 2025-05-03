@@ -90,8 +90,9 @@ MonoBehaviour:
   RightLegTrigger: {fileID: 0}
   LeftLegTrigger: {fileID: 0}
   CheckForSpeficTrigger: 0
-  SpeficTrigger: {fileID: 0}
+  SpeficTriggerList: []
   Manager: {fileID: 0}
+  Triggers: []
   hit: 0
   system: {fileID: 3491412107667126276}
 --- !u!198 &3491412107667126276
@@ -4053,13 +4054,13 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.22
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4115,9 +4116,9 @@ ParticleSystem:
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
-    dieWithParticles: 1
+    dieWithParticles: 0
     sizeAffectsWidth: 1
-    sizeAffectsLifetime: 0
+    sizeAffectsLifetime: 1
     inheritParticleColor: 1
     generateLightingData: 0
     splitSubEmitterRibbons: 0
@@ -4896,7 +4897,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: df375ba7940f1ab45a9c94b65750cdf7, type: 2}
+  - {fileID: 2100000, guid: 0f8830fd2c53634448635921cdd8d7fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4919,7 +4921,7 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
-  m_SortMode: 0
+  m_SortMode: 4
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
