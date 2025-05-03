@@ -4,7 +4,7 @@ public class Shooter : MonoBehaviour
 {
     public SteamVR_Action_Boolean triggerAction;  // Assign this in the inspector
     public SteamVR_Input_Sources handType = SteamVR_Input_Sources.RightHand;  // Or LeftHand\
-
+    public AudioSource gunsound;
 
     public GameObject projectilePrefab;  // Reference to the projectile prefab
     public Transform shootingPoint;      // Point from where the projectile will be shot (could be a child object)
@@ -19,6 +19,7 @@ public class Shooter : MonoBehaviour
         {
             Debug.Log("Trigger Pressed Down");
             ShootProjectile();
+            gunsound.Play();
         }
 
     }

@@ -233,46 +233,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &631480798
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &704063032
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +395,7 @@ MonoBehaviour:
     actionPath: 
     needsReinit: 0
   handType: 2
+  gunsound: {fileID: 0}
   projectilePrefab: {fileID: 8686030361222199365, guid: f7b4462c6afdbcf46b4e7d1ca4b8c98c, type: 3}
   shootingPoint: {fileID: 918547409}
   projectileSpeed: 10
@@ -587,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 260866436855109848, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1995098815}
+      objectReference: {fileID: 1399939352}
     - target: {fileID: 2004485734729543591, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -619,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 5828332956018863838, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 631480798}
+      objectReference: {fileID: 1597500405}
     - target: {fileID: 6110319700167594912, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -697,6 +658,7 @@ MonoBehaviour:
     actionPath: 
     needsReinit: 0
   handType: 2
+  gunsound: {fileID: 0}
   projectilePrefab: {fileID: 8686030361222199365, guid: f7b4462c6afdbcf46b4e7d1ca4b8c98c, type: 3}
   shootingPoint: {fileID: 918547409}
   projectileSpeed: 10
@@ -1000,43 +962,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 949733207}
   m_SourcePrefab: {fileID: 100100000, guid: e0b086fbb874df143b6ac8f53cea5424, type: 3}
---- !u!1 &1970166834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7528410126593406065, guid: da695f8d935f9c8499628c7a20663284, type: 3}
-  m_PrefabInstance: {fileID: 1303921484}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1970166835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970166834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2ebb610a898ad4ea80a46f68a51622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 3820778708970975777, guid: 6499b77fc70faac4483e30550eeb554e, type: 3}
-  - {fileID: 2398166677429688597, guid: e51c0f6bcd50b7a41856a43a90028ec9, type: 3}
-  - {fileID: 3267860567838773862, guid: 9fb95815139b91b48905f452cc99dadb, type: 3}
-  spawnInterval: 2
-  points: 0
-  difficultyWC: 
-  level: 0
-  Master: {fileID: 6652759494710477810, guid: 36e9539637e569f4e89c5ffa5dac88b2, type: 3}
-  animator: {fileID: 1970166836}
-  speed: 0
-  PointsToWin: 400
-  selfManager: {fileID: 1970166834}
-  destroyedEnemys: 0
---- !u!95 &1970166836 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3213981688441785487, guid: da695f8d935f9c8499628c7a20663284, type: 3}
-  m_PrefabInstance: {fileID: 1303921484}
-  m_PrefabAsset: {fileID: 0}
---- !u!43 &1995098815
+--- !u!43 &1399939352
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1201,6 +1127,82 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!21 &1597500405
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!1 &1970166834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7528410126593406065, guid: da695f8d935f9c8499628c7a20663284, type: 3}
+  m_PrefabInstance: {fileID: 1303921484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1970166835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970166834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2ebb610a898ad4ea80a46f68a51622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 3820778708970975777, guid: 6499b77fc70faac4483e30550eeb554e, type: 3}
+  - {fileID: 2398166677429688597, guid: e51c0f6bcd50b7a41856a43a90028ec9, type: 3}
+  - {fileID: 3267860567838773862, guid: 9fb95815139b91b48905f452cc99dadb, type: 3}
+  spawnInterval: 2
+  points: 0
+  difficultyWC: 
+  level: 0
+  Master: {fileID: 6652759494710477810, guid: 36e9539637e569f4e89c5ffa5dac88b2, type: 3}
+  animator: {fileID: 1970166836}
+  speed: 0
+  PointsToWin: 400
+  selfManager: {fileID: 1970166834}
+  destroyedEnemys: 0
+--- !u!95 &1970166836 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3213981688441785487, guid: da695f8d935f9c8499628c7a20663284, type: 3}
+  m_PrefabInstance: {fileID: 1303921484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3792958862773205415
 Transform:
   m_ObjectHideFlags: 0
@@ -1420,9 +1422,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerAction:
-    actionPath: 
+    actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
   handType: 2
+  gunsound: {fileID: 7704032574287986240}
   projectilePrefab: {fileID: 8686030361222199365, guid: f7b4462c6afdbcf46b4e7d1ca4b8c98c, type: 3}
   shootingPoint: {fileID: 918547409}
   projectileSpeed: 10
