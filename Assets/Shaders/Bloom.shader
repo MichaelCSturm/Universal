@@ -1,121 +1,117 @@
-﻿Shader "Custom/Bloom" {
-	Properties {
-		_MainTex ("Texture", 2D) = "white" {}
-	}
+Shader "Hidden/Bloom" {
+    Properties {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
 
-	CGINCLUDE
-		#include "UnityCG.cginc"
+    SubShader {
 
-		sampler2D _MainTex, _SourceTex;
-		float4 _MainTex_TexelSize;
+        CGINCLUDE
+            #include "UnityCG.cginc"
 
-		half4 _Filter;
+            sampler2D _MainTex;
+            float2 _MainTex_TexelSize;
 
-		half _Intensity;
+            struct VertexData {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
 
-		struct VertexData {
-			float4 vertex : POSITION;
-			float2 uv : TEXCOORD0;
-		};
+            struct v2f {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+            };
 
-		struct Interpolators {
-			float4 pos : SV_POSITION;
-			float2 uv : TEXCOORD0;
-		};
+            float3 Sample(float2 uv) {
+                return tex2D(_MainTex, uv).rgb;
+            }
 
-		Interpolators VertexProgram (VertexData v) {
-			Interpolators i;
-			i.pos = UnityObjectToClipPos(v.vertex);
-			i.uv = v.uv;
-			return i;
-		}
+            float3 SampleBox(float2 uv, float delta) {
+                float4 o = _MainTex_TexelSize.xyxy * float2(-delta, delta).xxyy;
+                float3 s = Sample(uv + o.xy) + Sample(uv + o.zy) + Sample(uv + o.xw) + Sample(uv + o.zw);
 
-		half3 Sample (float2 uv) {
-			return tex2D(_MainTex, uv).rgb;
-		}
+                return s * 0.25f;
+            }
 
-		half3 SampleBox (float2 uv, float delta) {
-			float4 o = _MainTex_TexelSize.xyxy * float2(-delta, delta).xxyy;
-			half3 s =
-				Sample(uv + o.xy) + Sample(uv + o.zy) +
-				Sample(uv + o.xw) + Sample(uv + o.zw);
-			return s * 0.25f;
-		}
+            v2f vp(VertexData v) {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                return o;
+            }
+        ENDCG
 
-		half3 Prefilter (half3 c) {
-			half brightness = max(c.r, max(c.g, c.b));
-			half soft = brightness - _Filter.y;
-			soft = clamp(soft, 0, _Filter.z);
-			soft = soft * soft * _Filter.w;
-			half contribution = max(soft, brightness - _Filter.x);
-			contribution /= max(brightness, 0.00001);
-			return c * contribution;
-		}
+        // Filter pixels
+        Pass {
+            CGPROGRAM
+            #pragma vertex vp 
+            #pragma fragment fp
 
-	ENDCG
+            float _Threshold, _SoftThreshold;
 
-	SubShader {
-		Cull Off
-		ZTest Always
-		ZWrite Off
+            float4 Prefilter(float4 col) {
+                half brightness = max(col.r, max(col.g, col.b));
+                half knee = _Threshold * _SoftThreshold;
+                half soft = brightness - _Threshold + knee;
+                soft = clamp(soft, 0, 2 * knee);
+                soft = soft * soft / (4 * knee * 0.00001);
+                half contribution = max(soft, brightness - _Threshold);
+                contribution /= max(contribution, 0.00001);
 
-		Pass { // 0
-			CGPROGRAM
-				#pragma vertex VertexProgram
-				#pragma fragment FragmentProgram
+                return col * contribution;
+            }
 
-				half4 FragmentProgram (Interpolators i) : SV_Target {
-					return half4(Prefilter(SampleBox(i.uv, 1)), 1);
-				}
-			ENDCG
-		}
+            float4 fp(v2f i) : SV_TARGET {
+                return Prefilter(float4(SampleBox(i.uv, 1.0f), 1.0f));
+            }
+            ENDCG
+        }
 
-		Pass { // 1
-			CGPROGRAM
-				#pragma vertex VertexProgram
-				#pragma fragment FragmentProgram
+        // Box Downsample
+        Pass {
+            CGPROGRAM
+            #pragma vertex vp 
+            #pragma fragment fp
 
-				half4 FragmentProgram (Interpolators i) : SV_Target {
-					return half4(SampleBox(i.uv, 1), 1);
-				}
-			ENDCG
-		}
+            float _DownDelta;
 
-		Pass { // 2
-			Blend One One
+            float4 fp(v2f i) : SV_TARGET {
+                return float4(SampleBox(i.uv, _DownDelta), 1.0f);
+            }
+            ENDCG
+        }
 
-			CGPROGRAM
-				#pragma vertex VertexProgram
-				#pragma fragment FragmentProgram
+        // Box Upsample
+        Pass {
+            Blend One One
 
-				half4 FragmentProgram (Interpolators i) : SV_Target {
-					return half4(SampleBox(i.uv, 0.5), 1);
-				}
-			ENDCG
-		}
+            CGPROGRAM
+            #pragma vertex vp 
+            #pragma fragment fp
 
-		Pass { // 3
-			CGPROGRAM
-				#pragma vertex VertexProgram
-				#pragma fragment FragmentProgram
+            float _UpDelta;
 
-				half4 FragmentProgram (Interpolators i) : SV_Target {
-					half4 c = tex2D(_SourceTex, i.uv);
-					c.rgb += _Intensity * SampleBox(i.uv, 0.5);
-					return c;
-				}
-			ENDCG
-		}
+            float4 fp(v2f i) : SV_TARGET {
+                return float4(SampleBox(i.uv, _UpDelta), 1.0f);
+            }
+            ENDCG
+        }
 
-		Pass { // 4
-			CGPROGRAM
-				#pragma vertex VertexProgram
-				#pragma fragment FragmentProgram
+        // Additive Blend Bloom
+        Pass {
+            CGPROGRAM
+            #pragma vertex vp 
+            #pragma fragment fp
 
-				half4 FragmentProgram (Interpolators i) : SV_Target {
-					return half4(_Intensity * SampleBox(i.uv, 0.5), 1);
-				}
-			ENDCG
-		}
-	}
+            sampler2D _OriginalTex;
+            float _Intensity;
+
+            float4 fp(v2f i) : SV_TARGET {
+                float4 col = tex2D(_OriginalTex, i.uv);
+                col.rgb +=  pow(_Intensity * pow(SampleBox(i.uv, 0.5f), 1.0f / 2.2f), 2.2f);
+
+                return col;
+            }
+            ENDCG
+        }
+    }
 }

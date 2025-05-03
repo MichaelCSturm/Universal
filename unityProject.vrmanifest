@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.virtualrealityuniverse.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\ccwkkw\\Documents\\GitHub\\Universal\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\mcstvb\\Documents\\GitHub\\Universal\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Virtual Reality Universe [Testing]"

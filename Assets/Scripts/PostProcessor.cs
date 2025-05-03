@@ -6,7 +6,7 @@ using UnityEngine;
 public class PostProcessor : MonoBehaviour {
     public Shader postProcessingShader;
 
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 2.0f)]
     public float contrast;
     
     [Range(-1.0f, 1.0f)]
