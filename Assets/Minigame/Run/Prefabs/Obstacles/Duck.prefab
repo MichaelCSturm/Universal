@@ -32,6 +32,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 6541612253904127424, guid: 37839e01483ca0e4fb9d7c61a461bfc3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541612253904127424, guid: 37839e01483ca0e4fb9d7c61a461bfc3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cdc700919a069e54fbd45245afe8d769, type: 2}
     - target: {fileID: 8859824235574276414, guid: 37839e01483ca0e4fb9d7c61a461bfc3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
