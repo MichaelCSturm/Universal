@@ -2,7 +2,7 @@ Shader "Hidden/Bloom" {
     Properties {
         _MainTex ("Texture", 2D) = "white" {}
     }
-
+    // leaving this comment so fucking github saves the damn file
     SubShader {
 
         CGINCLUDE
