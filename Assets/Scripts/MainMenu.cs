@@ -34,7 +34,13 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (debugMode)
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                MainMaster.IncreaseLevelAndLoadNextScene(3);
+            }
+        }
     }
     public void OnFadeComplete() // has to be here or animator will freak out
     {
