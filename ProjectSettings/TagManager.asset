@@ -17,6 +17,7 @@ TagManager:
   - target
   - enemy
   - Breakable
+  - BeatSaberBox
   layers:
   - Default
   - TransparentFX
