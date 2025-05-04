@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using static UnityEditor.FilePathAttribute;
 
 
@@ -11,6 +12,7 @@ public class BallSpawner : MonoBehaviour
     public GameObject Ball;
     public GameObject Spawner;
     // Start is called before the first frame update
+    bool running = true;
     public void SpawnBall()
     {
         Vector3 Location = Spawner.transform.position;
@@ -19,7 +21,12 @@ public class BallSpawner : MonoBehaviour
     }
     void Update()
     {
-        StartCoroutine(waiter());
+
+        if (running)
+        {
+            StartCoroutine(waiter());
+        }
+        
 
     }
 
@@ -27,12 +34,14 @@ public class BallSpawner : MonoBehaviour
     IEnumerator waiter()
     {
 
+        running = false;
 
-       
-        
+
+
         yield return wait(waitTime);
         SpawnBall();
         yield return wait(waitTime);
+        running = true;
     }
 
     IEnumerator wait(float waitTime)
