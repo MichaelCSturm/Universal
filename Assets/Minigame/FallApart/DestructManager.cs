@@ -85,9 +85,13 @@ public class DestructManager : MonoBehaviour
         foreach (GameObject child in childList)
         {
             child.SetActive(false);
+            if (child.name == numberOfModels.ToString() )
+            {
+                child.SetActive(true);
+            }
         }
 
-
+       
 
     }
     IEnumerator waiter()
@@ -98,8 +102,7 @@ public class DestructManager : MonoBehaviour
 
 
         yield return wait(waitTime);
-        Debug.Log("went off at :");
-        Debug.Log(Time.deltaTime);
+        Changetimer();
 
         running = true;
     }
