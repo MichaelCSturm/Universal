@@ -34,6 +34,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _FogAmount: 8.46
-    - _FogIntensity: 0.68
+    - _FogIntensity: 0.4
     m_Colors: []
   m_BuildTextureStacks: []
