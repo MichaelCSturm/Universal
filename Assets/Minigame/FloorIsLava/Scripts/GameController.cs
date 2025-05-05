@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
 
     public int numberOfLavaBlocks = 5;
 
+    public AudioSource lavaAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,6 +104,7 @@ public class GameController : MonoBehaviour
 
     private void RunWarning()
     {
+        lavaAudio.gameObject.SetActive(false);
         Debug.Log("RunWarning");
         Randomizer();
 
@@ -139,6 +142,7 @@ public class GameController : MonoBehaviour
     }
     private void AddLava()
     {
+        lavaAudio.gameObject.SetActive(true);
         Debug.Log("AddLava");
 
         for (int i = 0; i < WarningCubes.Length; i++)
