@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public int mediumLevelPoints = 5;
     public int easyLevelPoints = 3;
 
-    private int winThreshold;
+    private int winThreshold = 5;
     private int currentPoints = 0;
 
     private bool newRound = true;
@@ -63,12 +63,13 @@ public class GameController : MonoBehaviour
             currentPoints++;
             CheckPoints();
             newRound = false;
+            Debug.Log(currentPoints);
         }
 
     }
     private void CheckPoints()
     {
-        if(currentPoints < winThreshold)
+        if(currentPoints >= winThreshold)
         {
             GameWin();
         }
@@ -112,6 +113,10 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < safeCubes.Length; i++)
         {
             safeCubes[i].SetActive(false);
+        }
+        for (int i = 0; i < lavaCubes.Length; i++)
+        {
+            lavaCubes[i].SetActive(false);
         }
 
         // Enable warning cubes at the chosen indexes
