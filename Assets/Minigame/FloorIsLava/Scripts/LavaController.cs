@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class LavaController : MonoBehaviour
 {
     public int hardLevelPoints = 10;
     public int mediumLevelPoints = 5;
@@ -36,13 +36,13 @@ public class GameController : MonoBehaviour
         currentPoints = 0;
         newRound = true;
         StartCoroutine(SwitchLava());
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void GameOver()
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
     public void AddPoints()
     {
         Debug.Log("AddPoints");
-        if (newRound == true)
+        if(newRound == true)
         {
             Debug.Log(newRound == true);
             currentPoints++;
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
     }
     private void CheckPoints()
     {
-        if (currentPoints >= winThreshold)
+        if(currentPoints >= winThreshold)
         {
             GameWin();
         }
@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
     }
 
 
-    IEnumerator SwitchLava()
+   IEnumerator SwitchLava()
     {
         if (time > 1f)
         {
