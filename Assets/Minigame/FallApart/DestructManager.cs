@@ -111,6 +111,10 @@ public class DestructManager : MonoBehaviour
        
 
     }
+    public void OnFadeComplete() // has to be here or animator will freak out
+    {
+        MainMaster.OnFadeComplete();
+    }
     IEnumerator waiter()
     {
 

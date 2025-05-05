@@ -28,11 +28,16 @@ public class Master : MonoBehaviour
     }
     public void FadeToLevel(int levelIndex)
     {
+        print("fade out");
         animator.SetTrigger("FadeOut");
+        print("fade out 2");
         levelToLoad = levelIndex;
+        OnFadeComplete();
+
     }
     public void OnFadeComplete()
     {
+        print("on fade complete");
         SceneManager.LoadScene(levelToLoad);
     }
     //public static Singleton Instance { get; private set; }
@@ -66,6 +71,15 @@ public class Master : MonoBehaviour
         {
             return "0";
         }
+    }
+    public void IncreaseLevelAndLoadNextScene(int levelIndex)
+    {
+        if (Singleton.Instance.Level <3)
+        {
+            Singleton.Instance.Level = Singleton.Instance.Level + 1;
+
+        }
+        RandomLevel(levelIndex);
     }
     public void SaveScore()
     {
@@ -153,25 +167,34 @@ public class Master : MonoBehaviour
     {
         Singleton.Instance.IncreaseLevel();
     }
+    public int ReturnLevel()
+    {
+        return Singleton.Instance.Level;
+
+    }
     public void ResetHealth()
     {
         Singleton.Instance.ResetHealth();
     }
     public void RandomLevel(int myLevel)
     {
+        print("got to random level");
         int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
 
-        while (true) { 
+        while (RandomLevelToFadeTo == myLevel) { 
         RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
             if (RandomLevelToFadeTo != myLevel) 
             {
                 break;
             }
-            FadeToLevel(RandomLevelToFadeTo);
         }
+        print("going to level fade");
+        FadeToLevel(RandomLevelToFadeTo);
     }
     public void FailLevel()
     {
+        print("fail level called");
+        Singleton.Instance.Health = 1;
         if (failonce)
         {
             failonce = false;
@@ -186,6 +209,7 @@ public class Master : MonoBehaviour
                 Singleton.Instance.ResetTimer();
                 SaveScore();
                 ResetScore();
+                RandomLevel(0);
             }
 
         }
