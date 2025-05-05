@@ -1,22 +1,27 @@
 using UnityEngine;
-
+using Valve.VR;
 public class Shooter : MonoBehaviour
 {
+    public SteamVR_Action_Boolean triggerAction;  // Assign this in the inspector
+    public SteamVR_Input_Sources handType = SteamVR_Input_Sources.RightHand;  // Or LeftHand\
+    public AudioSource gunsound;
+
     public GameObject projectilePrefab;  // Reference to the projectile prefab
     public Transform shootingPoint;      // Point from where the projectile will be shot (could be a child object)
-    public float fireRate = 1f;          // Time between each shot (in seconds)
+        // Time between each shot (in seconds)
     public float projectileSpeed = 10f;  // Speed of the projectile
 
     private float nextFireTime = 0f;     // Time when the next shot can be fired
 
     void Update()
     {
-        // Auto-fire: Fire every 'fireRate' seconds
-        if (Time.time > nextFireTime)
+        if (triggerAction.GetStateDown(handType))
         {
+            Debug.Log("Trigger Pressed Down");
             ShootProjectile();
-            nextFireTime = Time.time + fireRate;  // Set the next shot time based on fire rate
+            gunsound.Play();
         }
+
     }
 
     void ShootProjectile()

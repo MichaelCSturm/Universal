@@ -17,6 +17,9 @@ TagManager:
   - target
   - enemy
   - Breakable
+
+  - Lava
+  - Safezone
   - BeatSaberBox
   layers:
   - Default

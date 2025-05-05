@@ -33,7 +33,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FogAmount: 8.46
-    - _FogIntensity: 0.4
+
+    - _FogAmount: 7.96
+    - _FogIntensity: 0.72
+
     m_Colors: []
   m_BuildTextureStacks: []

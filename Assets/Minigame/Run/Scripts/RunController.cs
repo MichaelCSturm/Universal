@@ -10,9 +10,10 @@ public class RunController : MonoBehaviour
     public Animator animator;
     public GameObject Master;
     public float speed;
-    Master MainMaster;
+    public Master MainMaster;
     private int levelToLoad;
     private bool once = true;
+    public int myLevel = 1;
     private void Start()
     {
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
@@ -64,12 +65,19 @@ public class RunController : MonoBehaviour
 
     private void GameOver()
     {
+        
         Debug.Log("Ayo you lose");
+        MainMaster.RandomLevel(myLevel);
+
     }
     private void GameWin()
     {
         Debug.Log("Ayo you win");
-        MainMaster.FadeToLevel(1);
+        MainMaster.IncreaseLevel();
+        MainMaster.AddToScore(1);
+
+        MainMaster.RandomLevel(myLevel);
+        //MainMaster.FadeToLevel(1);
         //
         //  Here's a guide on how to swap to the next scene its pretty simple. Just call the MainManger to the scene you want to switch to
         //
