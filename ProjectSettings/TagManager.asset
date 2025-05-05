@@ -17,6 +17,8 @@ TagManager:
   - target
   - enemy
   - Breakable
+  - Lava
+  - Safezone
   layers:
   - Default
   - TransparentFX
