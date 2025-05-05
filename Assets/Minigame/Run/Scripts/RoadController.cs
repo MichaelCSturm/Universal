@@ -11,7 +11,11 @@ public class RoadController : MonoBehaviour
     private bool gameOn = true;
     public GameObject[] obstacles;
     int index;
-
+    public Animator animator;
+    public GameObject Master;
+    //public float speed;
+    Master MainMaster;
+    private int levelToLoad;
 
     //// Start is called before the first frame update
     //void Start()
@@ -63,6 +67,16 @@ public class RoadController : MonoBehaviour
     void Start()
     {
         StartCoroutine(RoadSpeed());
+
+        GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
+        MainMaster = ObjectMaster.GetComponent<Master>();
+        //MainMaster = new Master();
+        if (animator != null)
+        {
+            MainMaster.animator = animator;
+            MainMaster.levelToLoad = levelToLoad;
+        }
+
     }
 
     // Update is called once per frame
@@ -103,6 +117,11 @@ public class RoadController : MonoBehaviour
         Randomizer();
         Vector3 spawnPosition = new Vector3(0f, 0f, 0f);
         GameObject spawnedPrefab = Instantiate(currentObstacle, spawnPosition, Quaternion.identity);
+        RunController script = spawnedPrefab.GetComponent<RunController>();
+        //script.MainMaster = MainMaster;
+        // Run
+        //script.Master = Master;
+        script.animator = animator;
         spawnedPrefab.transform.SetParent(road.transform);
     }
 

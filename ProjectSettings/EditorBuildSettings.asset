@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestHandsScene.unity
     guid: 15c674c2abc265d46b8e6ebf59daefab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestHandsScene 1.unity
     guid: cadfa97dbe3122949b104f664e2a22a6
   - enabled: 1
@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigame/Run/Run.unity
     guid: 5926553dd3ee2774aa57c486cb138828
+  - enabled: 1
+    path: Assets/Scenes/BeatSaberMiniGame.unity
+    guid: 80e95e7562e9b5044bc48d5ef0f967de
+  - enabled: 1
+    path: Assets/Scenes/Destruction.unity
+    guid: bf293654f3c77e346a0a2c7874980c4b
+  - enabled: 1
+    path: Assets/Minigame/Pose/Pose.unity
+    guid: 9802dfe3f4faf72469bb017b972182c2
+  - enabled: 1
+    path: Assets/Scenes/Construction.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e0a1aef329dd211408158a1ef65cc553, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 17e8433c254ec074bb82b10c40b54416, type: 2}

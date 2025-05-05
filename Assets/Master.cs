@@ -18,6 +18,7 @@ public class Master : MonoBehaviour
     public int levelToLoad;
     public bool debugmode = false;
     private bool once = true;
+    private bool failonce = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
    
@@ -109,6 +110,10 @@ public class Master : MonoBehaviour
     {
         return Singleton.Instance.Score;
     }
+    public void ResetScore()
+    {
+        Singleton.Instance.Score =0;
+    }
     public void AddToScore(int number_to_add)
     {
         Singleton.Instance.Score = Singleton.Instance.Score + number_to_add;
@@ -144,27 +149,45 @@ public class Master : MonoBehaviour
         }
         
     }
-    public void IncreaseLevelAndLoadNextScene(int levelIndex)
+    public void IncreaseLevel()
     {
         Singleton.Instance.IncreaseLevel();
-        FadeToLevel(levelIndex);
     }
     public void ResetHealth()
     {
         Singleton.Instance.ResetHealth();
     }
+    public void RandomLevel(int myLevel)
+    {
+        int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+
+        while (true) { 
+        RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+            if (RandomLevelToFadeTo != myLevel) 
+            {
+                break;
+            }
+            FadeToLevel(RandomLevelToFadeTo);
+        }
+    }
     public void FailLevel()
     {
-        Singleton.Instance.SubtractHealth();
-        if (Singleton.Instance.Health <= 0)
+        if (failonce)
         {
-            var score = ReturnScore().ToString() ;
-            print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0 Impliment a system in Master FailLevel to swap to a menu scene");
-           // Console.WriteLine(score, "your score");
-            Singleton.Instance.ResetHealth();
-            Singleton.Instance.ResetLevel();
-            Singleton.Instance.ResetTimer();
-            SaveScore();
+            failonce = false;
+            Singleton.Instance.SubtractHealth();
+            if (Singleton.Instance.Health <= 0)
+            {
+                var score = ReturnScore().ToString();
+                print("Hey YOU FAILED THE LEVEL AND YOUR HEALTH IS BELOW OR EQUAL TO 0 Impliment a system in Master FailLevel to swap to a menu scene");
+                // Console.WriteLine(score, "your score");
+                Singleton.Instance.ResetHealth();
+                Singleton.Instance.ResetLevel();
+                Singleton.Instance.ResetTimer();
+                SaveScore();
+                ResetScore();
+            }
+
         }
 
     }

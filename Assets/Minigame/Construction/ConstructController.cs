@@ -22,8 +22,10 @@ public class ConstructController : MonoBehaviour
     public GameObject Master;
     Master MainMaster;
     private int levelToLoad;
+    public int myLevel = 5;
 
     public GameObject Controller;
+    public float Timer = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,23 @@ public class ConstructController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Timer = Timer -= Time.deltaTime;
+        if (Timer <= 0)
+        {
+            print("LOOSER YOURE A LOOSER ");
+            MainMaster.AddToScore(-1);
+
+            MainMaster.RandomLevel(myLevel);
+        }
+        if (points == difficultyWC[level])
+        {
+            //win
+            print("won game");
+            MainMaster.IncreaseLevel();
+            MainMaster.AddToScore(1);
+            MainMaster.RandomLevel(myLevel);
+           
+        }
     }
 
     IEnumerator SpawnGuys()
