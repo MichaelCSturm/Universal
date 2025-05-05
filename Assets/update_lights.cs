@@ -57,7 +57,7 @@ public class update_lights : MonoBehaviour
     IEnumerator waiter()
     {
 
-        print("asdsa");
+        
         running = false;
         //Wait for waitTime amount of seconds
         float waitTime = speed;

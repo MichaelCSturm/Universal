@@ -5,6 +5,7 @@ using static UnityEditor.FilePathAttribute;
 
 public class BeatSaberManager : MonoBehaviour
 {
+    public float waitTime;
     public bool debugMode;
     public GameObject RightHandSpawnPoint;
     public GameObject LeftHandSpawnPoint;
@@ -213,10 +214,10 @@ public class BeatSaberManager : MonoBehaviour
         
 
         //Wait for waitTime amount of seconds
-        float waitTime = 1;
+       
         CreateHitBox();
         
-        waitTime = 1;
+        //waitTime = 1;
         yield return waitt(waitTime);
 
         
