@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
     {
         newRound = false;
         Debug.Log("GameOver its over");
-        MainMaster.FailLevel();
+        MainMaster.FailLevel(myLevel);
         //Add the logic for game ending
     }
     private void GameWin()

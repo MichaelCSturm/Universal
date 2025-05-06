@@ -181,8 +181,8 @@ public class Master : MonoBehaviour
         print("got to random level");
         int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
 
-        while (RandomLevelToFadeTo == myLevel) { 
-        RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+        while (RandomLevelToFadeTo == myLevel || RandomLevelToFadeTo == 0 || RandomLevelToFadeTo == 2) { 
+        RandomLevelToFadeTo = UnityEngine.Random.Range(0, 6);
             if (RandomLevelToFadeTo != myLevel) 
             {
                 break;
@@ -191,7 +191,7 @@ public class Master : MonoBehaviour
         print("going to level fade");
         FadeToLevel(RandomLevelToFadeTo);
     }
-    public void FailLevel()
+    public void FailLevel(int myLevel)
     {
         print("fail level called");
         Singleton.Instance.Health = 1;
@@ -209,7 +209,7 @@ public class Master : MonoBehaviour
                 Singleton.Instance.ResetTimer();
                 SaveScore();
                 ResetScore();
-                RandomLevel(0);
+                RandomLevel(myLevel);
             }
 
         }

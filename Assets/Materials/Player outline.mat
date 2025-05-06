@@ -55,9 +55,9 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _outline_thickness: 1.01
+    - _outline_thickness: 0
     m_Colors:
-    - _outline_color: {r: 0, g: 0, b: 0, a: 0}
+    - _outline_color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4291181298374446131
 MonoBehaviour:
