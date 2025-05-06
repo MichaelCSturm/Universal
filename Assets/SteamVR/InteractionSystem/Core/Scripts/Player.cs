@@ -252,7 +252,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void Awake()
 		{
-			if ( trackingOriginTransform == null )
+			 if ( trackingOriginTransform == null )
 			{
 				trackingOriginTransform = this.transform;
 			}
@@ -267,11 +267,12 @@ namespace Valve.VR.InteractionSystem
 				}
 			}
 #endif
+		
 		}
 
 
 		//-------------------------------------------------
-		private IEnumerator Start()
+		 private IEnumerator Start()
 		{
 			_instance = this;
 
@@ -287,8 +288,8 @@ namespace Valve.VR.InteractionSystem
 #if !HIDE_DEBUG_UI
 				ActivateRig( rig2DFallback );
 #endif
-			}
-        }
+			} 
+        } 
 
         protected virtual void Update()
         {
@@ -306,10 +307,11 @@ namespace Valve.VR.InteractionSystem
                     Debug.Log("<b>SteamVR Interaction System</b> Headset removed");
                 }
             }
+	
         }
 
-		//-------------------------------------------------
-		void OnDrawGizmos()
+        //-------------------------------------------------
+        void OnDrawGizmos()
 		{
 			if ( this != instance )
 			{
