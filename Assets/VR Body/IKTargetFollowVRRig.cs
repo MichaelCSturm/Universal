@@ -44,4 +44,18 @@ public class IKTargetFollowVRRig : MonoBehaviour
         leftLeg.Map();
         rightLeg.Map();
     }
+
+    private void Start()
+    {
+//UpdateHeight();
+    }
+
+    void UpdateHeight()
+    {
+        float defaultHeight = 1.7f;
+        Vector3 footPos = (leftLeg.vrTarget.position + rightLeg.vrTarget.position) * 0.5f;
+        float currentHeight = Mathf.Abs(head.vrTarget.position.y - footPos.y);
+        float scaleRatio = currentHeight / defaultHeight;
+        transform.localScale = Vector3.one * scaleRatio;
+    }
 }

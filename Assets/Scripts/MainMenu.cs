@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     //public float speed;
     Master MainMaster;
     private int levelToLoad;
+    public int myLevel= 0;
     //public GameObject score;
     public TextMeshProUGUI textMeshProUGUI;
     void Start()
@@ -46,9 +47,10 @@ public class MainMenu : MonoBehaviour
     {
         MainMaster.OnFadeComplete();
     }
-    public void ChangeScene(int index)
+    public void ChangeScene()
     {
-        MainMaster.FadeToLevel(index);
+
+        MainMaster.RandomLevel(myLevel);
     }
     public void TutorialViewer()
     {

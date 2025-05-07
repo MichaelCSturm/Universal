@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public bool debugMode;
+    public Animator animator;
+    public GameObject Master;
+    //public float speed;
+    Master MainMaster;
+    private int levelToLoad;
+    public int myLevel = 6;
     public int hardLevelPoints = 10;
     public int mediumLevelPoints = 5;
     public int easyLevelPoints = 3;
@@ -29,14 +36,37 @@ public class GameController : MonoBehaviour
     public int numberOfLavaBlocks = 5;
 
     public AudioSource lavaAudio;
+    int leveldiff;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
+        MainMaster = ObjectMaster.GetComponent<Master>();
+        //MainMaster = new Master();
+        if (animator != null)
+        {
+            MainMaster.animator = animator;
+            MainMaster.levelToLoad = levelToLoad;
+            MainMaster.debugmode = debugMode;
+        }
         currentPoints = 0;
         newRound = true;
         StartCoroutine(SwitchLava());
-
+        leveldiff = MainMaster.ReturnLevel();
+        if (leveldiff == 1)
+        {
+            winThreshold = easyLevelPoints;
+        }
+        if (leveldiff == 2)
+        {
+            winThreshold = mediumLevelPoints;
+        }
+        if (leveldiff == 3)
+        {
+            winThreshold = hardLevelPoints;
+        }
     }
 
     // Update is called once per frame
@@ -48,12 +78,14 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         newRound = false;
-        Debug.Log("GameOver");
+        Debug.Log("GameOver its over");
+        MainMaster.FailLevel(myLevel);
         //Add the logic for game ending
     }
     private void GameWin()
     {
         Debug.Log("GameWin");
+        MainMaster.IncreaseLevelAndLoadNextScene(myLevel);
         //add the logic for win and change scenes here
     }
     public void AddPoints()
@@ -74,13 +106,17 @@ public class GameController : MonoBehaviour
         if (currentPoints >= winThreshold)
         {
             GameWin();
+
         }
     }
     private void CheckLevel()
     {
         //add logic here to switch the game level and the winthreshold variable with it
     }
-
+    public void OnFadeComplete() // has to be here or animator will freak out
+    {
+        MainMaster.OnFadeComplete();
+    }
 
     IEnumerator SwitchLava()
     {
