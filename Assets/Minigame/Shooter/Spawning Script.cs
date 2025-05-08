@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     public int destroyedEnemys = 0;
     private bool startLoadingLevel = true;
     public int myLevel;
-
+  
 
     void Start()
     {
@@ -53,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
             HScript.OneLife();
         }
         MainMaster.Player = Player;
+        print(health.ToString());
     }
     public void Update()
     {

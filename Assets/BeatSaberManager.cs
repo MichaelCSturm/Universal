@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 //using static UnityEditor.FilePathAttribute;
 
 public class BeatSaberManager : MonoBehaviour
@@ -181,6 +183,8 @@ public class BeatSaberManager : MonoBehaviour
             HScript.OneLife();
         }
         MainMaster.Player = Player;
+        Console.WriteLine("Health: ",health.ToString());
+
     }
     public void OnFadeComplete()
     {

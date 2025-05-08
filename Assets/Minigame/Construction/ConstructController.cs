@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ConstructController : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class ConstructController : MonoBehaviour
             HScript.OneLife();
         }
         MainMaster.Player = Player;
+        Console.WriteLine("Health: ", health.ToString());
+
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {

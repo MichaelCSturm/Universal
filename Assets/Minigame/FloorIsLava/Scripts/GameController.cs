@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
     public GameObject player;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
 
     public AudioSource lavaAudio;
     int leveldiff;
+
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +90,8 @@ public class GameController : MonoBehaviour
             HScript.OneLife();
         }
         MainMaster.Player = player;
+        Console.WriteLine("Health: ", health.ToString());
+
     }
 
     // Update is called once per frame

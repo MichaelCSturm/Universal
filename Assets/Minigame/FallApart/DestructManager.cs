@@ -72,6 +72,8 @@ public class DestructManager : MonoBehaviour
             HScript.OneLife();
         }
         MainMaster.Player = Player;
+        Console.WriteLine("Health: ", health.ToString());
+
     }
     void Update()
     {

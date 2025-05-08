@@ -49,6 +49,10 @@ public class Singleton
     //        Instance = this;
     //    }
     //}
+    public int ReturnHealth()
+    {
+        return Health;
+    }
     private void Update()
     {
         if (IsRunning)

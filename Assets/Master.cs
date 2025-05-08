@@ -25,7 +25,9 @@ public class Master : MonoBehaviour
     //public GameObject AudioController;
     public void Start()
     {
-        
+        //int localhealth = Singleton.Instance.ReturnHealth();
+        //string newLocalHealth = localhealth.ToString();
+        //Debug.Log("HEALTH IS : " + newLocalHealth);
     }
     public void FadeToLevel(int levelIndex)
     {
@@ -38,6 +40,7 @@ public class Master : MonoBehaviour
     }
     public void OnFadeComplete()
     {
+        failonce = true;
         Player.SetActive(false);
         print("on fade complete");
         SceneManager.LoadScene(levelToLoad);
@@ -201,12 +204,13 @@ public class Master : MonoBehaviour
     public void FailLevel(int myLevel)
     {
         print("fail level called");
-        Singleton.Instance.Health = 1;
+        //Singleton.Instance.Health = 1;
         if (failonce)
         {
             PlayLose();
             failonce = false;
             Singleton.Instance.SubtractHealth();
+            //print(Singleton.Instance.Health.ToString());
             if (Singleton.Instance.Health <= 0)
             {
                 var score = ReturnScore().ToString();
@@ -219,6 +223,10 @@ public class Master : MonoBehaviour
                 ResetScore();
                 //RandomLevel(myLevel);
                 FadeToLevel(0);
+            }
+            else 
+            {
+                RandomLevel(0);
             }
 
         }
