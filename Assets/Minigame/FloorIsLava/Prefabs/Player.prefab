@@ -102,9 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   poseAction:
     actionPath: /actions/default/in/Pose
-    needsReinit: 1
+    needsReinit: 0
   inputSource: 2
   origin: {fileID: 0}
   onTransformUpdated:
@@ -1423,6 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   poseAction:
     actionPath: /actions/default/in/PoseT2
     needsReinit: 0
@@ -1790,9 +1792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   poseAction:
     actionPath: /actions/default/in/Pose
-    needsReinit: 1
+    needsReinit: 0
   inputSource: 1
   origin: {fileID: 0}
   onTransformUpdated:
@@ -3364,7 +3367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initializeSteamVROnAwake: 1
-  doNotDestroy: 1
+  doNotDestroy: 0
   steamvr_render: {fileID: 0}
 --- !u!114 &265316262500273507
 MonoBehaviour:
@@ -4741,6 +4744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef33361ba84f464c8f5cc193cdef3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawningScript: {fileID: 0}
   health: 1
 --- !u!54 &5254825697866232344
 Rigidbody:
@@ -6525,6 +6529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   poseAction:
     actionPath: /actions/default/in/PoseT1
     needsReinit: 0
@@ -7698,6 +7703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check: 0
   poseAction:
     actionPath: /actions/default/in/PoseT0
     needsReinit: 0

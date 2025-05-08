@@ -63,7 +63,7 @@ public class MainMenu : MonoBehaviour
             stupidvr.SetActive(false);
         }
         //MainMaster.RandomLevel(myLevel);
-        MainMaster.FadeToLevel(5);
+        MainMaster.RandomLevel(0);
     }
     public void TutorialViewer()
     {
