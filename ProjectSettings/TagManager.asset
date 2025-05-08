@@ -27,6 +27,11 @@ TagManager:
   - Left Leg VR Target
   - Right Leg VR Target
   - CapsuleForLavaPlayerScript
+  - Head Trigger
+  - Left Hand Trigger
+  - Right Hand Trigger
+  - Left Leg Trigger
+  - Right Leg Trigger
   layers:
   - Default
   - TransparentFX
