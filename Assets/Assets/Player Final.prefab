@@ -120,6 +120,10 @@ PrefabInstance:
       propertyPath: poseAction.actionPath
       value: /actions/default/in/Pose
       objectReference: {fileID: 0}
+    - target: {fileID: 6759923946207501986, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6959411699555370303, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_TagString
       value: Left Hand VR Target
@@ -150,6 +154,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8519887733185106588, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: check
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902445956091300043, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

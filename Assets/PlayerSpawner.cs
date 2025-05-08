@@ -7,7 +7,7 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject playerFinal;
     GameObject player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
