@@ -1,6 +1,7 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 
 using System;
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,7 +15,10 @@ namespace Valve.VR
     /// </summary>
     public class SteamVR_Behaviour_Pose : MonoBehaviour
     {
-        public SteamVR_Action_Pose poseAction = SteamVR_Input.GetAction<SteamVR_Action_Pose>("Pose");
+
+        public int check = 0;
+
+        public SteamVR_Action_Pose poseAction;
 
         [Tooltip("The device this action should apply to. Any if the action is not device specific.")]
         public SteamVR_Input_Sources inputSource;
@@ -71,6 +75,24 @@ namespace Valve.VR
 
         protected virtual void Start()
         {
+            if (check == 0)
+            {
+                poseAction = SteamVR_Input.GetAction<SteamVR_Action_Pose>("PoseT0");
+            }
+            else if (check == 1)
+            {
+                poseAction = SteamVR_Input.GetAction<SteamVR_Action_Pose>("PoseT1");
+            }
+            else if (check == 2)
+            {
+                poseAction = SteamVR_Input.GetAction<SteamVR_Action_Pose>("PoseT2");
+            }
+            else
+            {
+                poseAction = SteamVR_Input.GetAction<SteamVR_Action_Pose>("Pose");
+            }
+
+
             if (poseAction == null)
             {
                 Debug.LogError("<b>[SteamVR]</b> No pose action set for this component", this);
@@ -81,6 +103,8 @@ namespace Valve.VR
 
             if (origin == null)
                 origin = this.transform.parent;
+
+            StartCoroutine(ForceReassignPoseAfterDelay());
         }
 
         protected virtual void OnEnable()
@@ -203,6 +227,13 @@ namespace Valve.VR
             return poseAction[inputSource].velocity;
         }
 
+        private IEnumerator ForceReassignPoseAfterDelay()
+        {
+            yield return new WaitForSeconds(0.1f);
+            CheckDeviceIndex();
+            UpdateTransform();
+        }
+
         /// <summary>Returns the current angular velocity of the pose (as of the last update)</summary>
         public Vector3 GetAngularVelocity()
         {
@@ -251,6 +282,8 @@ namespace Valve.VR
                 return poseAction.GetLocalizedOriginPart(inputSource, localizedParts);
             return null;
         }
+
+
 
         public delegate void ActiveChangeHandler(SteamVR_Behaviour_Pose fromAction, SteamVR_Input_Sources fromSource, bool active);
         public delegate void ChangeHandler(SteamVR_Behaviour_Pose fromAction, SteamVR_Input_Sources fromSource);
