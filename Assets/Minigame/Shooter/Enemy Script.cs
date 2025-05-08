@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private float timeOffset;
     public GameObject manger;
+
+    public ParticleSystem hitParticle;
 
     void Start()
     {
@@ -48,6 +51,8 @@ public class Enemy : MonoBehaviour
                 MoveFinalBoss();
                 break;
         }
+
+
     }
 
     void MoveBasic()
@@ -74,6 +79,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("projectile"))
         {
+            hitParticle.Play();
             health--;
             StartCoroutine(ChangeColor());
             if (health <= 0)
