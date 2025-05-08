@@ -75,7 +75,8 @@ public class ConstructController : MonoBehaviour
             print("LOOSER YOURE A LOOSER ");
             MainMaster.AddToScore(-1);
 
-            MainMaster.RandomLevel(myLevel);
+            //MainMaster.RandomLevel(myLevel);
+            MainMaster.FailLevel(myLevel);
         }
         if (points == difficultyWC[level])
         {
