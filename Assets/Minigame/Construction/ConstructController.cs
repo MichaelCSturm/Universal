@@ -33,6 +33,7 @@ public class ConstructController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();

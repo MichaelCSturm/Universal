@@ -14,6 +14,7 @@ public class test : MonoBehaviour
     void Update()
     {
         int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+       
         print(RandomLevelToFadeTo);
     }
 }

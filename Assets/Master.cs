@@ -41,7 +41,7 @@ public class Master : MonoBehaviour
     public void OnFadeComplete()
     {
         failonce = true;
-        Player.SetActive(false);
+        //Player.SetActive(false);
         print("on fade complete");
         SceneManager.LoadScene(levelToLoad);
     }
@@ -163,14 +163,32 @@ public class Master : MonoBehaviour
         Timer();
         if (debugmode)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Escape))
             {
-                //FailLevel();
-                print(GetHighScores());
+                IncreaseLevelAndLoadNextScene(3);
             }
-
+            if (Input.GetKeyUp(KeyCode.J))
+            {
+                IncreaseLevelAndLoadNextScene(2);
+            }
+            if (Input.GetKeyUp(KeyCode.K))
+            {
+                IncreaseLevelAndLoadNextScene(1);
+            }
+            if (Input.GetKeyUp(KeyCode.U))
+            {
+                IncreaseLevelAndLoadNextScene(4);
+            }
+            if (Input.GetKeyUp(KeyCode.I))
+            {
+                IncreaseLevelAndLoadNextScene(5);
+            }
+            if (Input.GetKeyUp(KeyCode.P))
+            {
+                IncreaseLevelAndLoadNextScene(0);
+            }
         }
-        
+
     }
     public void IncreaseLevel()
     {

@@ -20,6 +20,12 @@ TagManager:
   - Fire
   - BeatSaberBox
   - MusicPlayer
+  - Safezone
+  - Lava
+  - Left Hand VR Target
+  - Right Hand VR Target
+  - Left Leg VR Target
+  - Right Leg VR Target
   layers:
   - Default
   - TransparentFX
