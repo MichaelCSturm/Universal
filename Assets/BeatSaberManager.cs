@@ -21,6 +21,8 @@ public class BeatSaberManager : MonoBehaviour
     public GameObject FeetHitbox;
     public GameObject HandHitbox;
 
+    public int myLevel;
+
     public Animator animator;
     public GameObject Master;
     public float speed;
@@ -191,6 +193,8 @@ public class BeatSaberManager : MonoBehaviour
                 {
                     print("YO WE LOST");
                     print(MainMaster.TimeManager().ToString());
+                    MainMaster.AddToScore(-1);
+                    MainMaster.FailLevel(myLevel);
                 }
                 if (GoodScore >= 2)
                 {
@@ -199,6 +203,11 @@ public class BeatSaberManager : MonoBehaviour
                     print(MainMaster.ReturnScore().ToString());
                     print(MainMaster.TimeManager().ToString());
                     //MainMaster.FadeToLevel(1);
+
+                    MainMaster.AddToScore(1);
+                    //MainMaster.IncreaseLevel();
+
+                    MainMaster.RandomLevel(myLevel);
                 }
                 Destroy(hitboxes[0]);
                 hitboxes.RemoveAt(0);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -74,6 +75,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("projectile"))
         {
             health--;
+            StartCoroutine(ChangeColor());
             if (health <= 0)
             {
                 //manger.GetComponent<SpawningScript>
@@ -81,5 +83,25 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    IEnumerator ChangeColor()
+    {
+        Color myColor = GetComponent<Renderer>().material.color;
+
+        Renderer targetRenderer = gameObject.GetComponent<Renderer>();
+        if (targetRenderer != null)
+        {
+            targetRenderer.material.color = Color.red;
+        }
+
+
+        yield return new WaitForSecondsRealtime(.5f);
+
+        if (targetRenderer != null)
+        {
+            targetRenderer.material.color = myColor;
+        }
+
     }
 }

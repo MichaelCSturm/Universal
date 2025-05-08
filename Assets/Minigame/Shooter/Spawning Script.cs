@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject selfManager;
     public int destroyedEnemys = 0;
     private bool startLoadingLevel = true;
-    
+    public int myLevel;
 
 
     void Start()
@@ -41,6 +41,10 @@ public class EnemySpawner : MonoBehaviour
             MainMaster.FadeToLevel(2);
             startLoadingLevel = false;
         }
+    }
+    public void GameOver()
+    {
+        MainMaster.FailLevel(myLevel);
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {

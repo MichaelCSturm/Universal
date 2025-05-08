@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public EnemySpawner spawningScript;
     public int health = 1;
     void Start()
     {
@@ -18,10 +18,11 @@ public class playerHealth : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit");
         // Check if the object we collided with has the "enemy" tag
-        if (other.collider.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("enemy"))
         {
             health--;  // Decrease health when colliding with an "enemy"
             Debug.Log("Health: " + health);
@@ -30,6 +31,7 @@ public class playerHealth : MonoBehaviour
             {
                 // Call the game over method
                 Debug.Log("lose lol");
+                spawningScript.GameOver();
             }
         }
     }

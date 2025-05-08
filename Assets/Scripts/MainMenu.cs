@@ -50,10 +50,15 @@ public class MainMenu : MonoBehaviour
     public void ChangeScene()
     {
 
-        MainMaster.RandomLevel(myLevel);
+        //MainMaster.RandomLevel(myLevel);
+        MainMaster.FadeToLevel(5);
     }
     public void TutorialViewer()
     {
 
+    }
+    public void ThrowText()
+    {
+        print("There is a click");
     }
 }
