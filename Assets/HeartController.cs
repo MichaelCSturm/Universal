@@ -9,6 +9,7 @@ public class HeartController : MonoBehaviour
     public Material DeadHeartMat;
     //public int lives;
     public GameObject[] Hearts;
+    public Animator[] Animators;
     public void OneLife() 
     {
         if (Hearts != null)
