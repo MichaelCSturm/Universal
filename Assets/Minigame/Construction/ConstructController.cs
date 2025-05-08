@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConstructController : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Hearts;
     public bool debugMode;
     public int points;
@@ -59,6 +60,7 @@ public class ConstructController : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = Player;
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {

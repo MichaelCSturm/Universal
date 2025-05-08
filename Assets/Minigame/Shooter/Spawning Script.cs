@@ -3,6 +3,7 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Hearts;
     public GameObject[] enemyPrefabs;
     public float spawnInterval = 2f;
@@ -51,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = Player;
     }
     public void Update()
     {

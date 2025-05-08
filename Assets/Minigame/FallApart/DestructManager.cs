@@ -18,6 +18,7 @@ public static class ClassExtension
 }
 public class DestructManager : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Hearts;
     public Animator animator;
     public GameObject Master;
@@ -70,6 +71,7 @@ public class DestructManager : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = Player;
     }
     void Update()
     {

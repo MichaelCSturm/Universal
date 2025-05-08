@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LavaController : MonoBehaviour
 {
+   // public GameObject Player;
     public int hardLevelPoints = 10;
     public int mediumLevelPoints = 5;
     public int easyLevelPoints = 3;
@@ -36,7 +37,8 @@ public class LavaController : MonoBehaviour
         currentPoints = 0;
         newRound = true;
         StartCoroutine(SwitchLava());
-        
+        //MainMaster.Player = Player;
+
     }
 
     // Update is called once per frame

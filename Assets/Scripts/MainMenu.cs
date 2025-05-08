@@ -7,6 +7,7 @@ using Valve.VR;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject[] objects;
     public SteamVR_Behaviour_Pose[] SteamVrBehaviorPoses;
     public bool debugMode;
@@ -33,6 +34,7 @@ public class MainMenu : MonoBehaviour
        // TextMeshPro scoreText = score.GetComponent<TextMeshPro>();
         string realText = "High Score " + HighScore;
         textMeshProUGUI.text = realText;
+        MainMaster.Player = Player;
     }
 
     // Update is called once per frame

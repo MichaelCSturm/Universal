@@ -29,6 +29,7 @@ public class BeatSaberManager : MonoBehaviour
     public float speed;
     Master MainMaster;
     private int levelToLoad;
+    public GameObject Player;
 
     //public float[] values;
 
@@ -179,6 +180,7 @@ public class BeatSaberManager : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = Player;
     }
     public void OnFadeComplete()
     {

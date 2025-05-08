@@ -12,7 +12,7 @@ using System.Linq;
 
 public class Master : MonoBehaviour
 {
-    
+    public GameObject Player;
     public string filename = "MyScore.txt";
     public Animator animator;
     public int levelToLoad;
@@ -38,6 +38,7 @@ public class Master : MonoBehaviour
     }
     public void OnFadeComplete()
     {
+        Player.SetActive(false);
         print("on fade complete");
         SceneManager.LoadScene(levelToLoad);
     }

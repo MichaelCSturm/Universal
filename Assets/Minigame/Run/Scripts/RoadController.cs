@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoadController : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Hearts;
     public GameObject road;
     private GameObject currentObstacle;
@@ -95,6 +96,7 @@ public class RoadController : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = Player;
     }
 
     // Update is called once per frame

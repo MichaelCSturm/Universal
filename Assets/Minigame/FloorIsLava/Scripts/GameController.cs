@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject player;
     public GameObject Hearts;
     public bool debugMode;
     public Animator animator;
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
         {
             HScript.OneLife();
         }
+        MainMaster.Player = player;
     }
 
     // Update is called once per frame
