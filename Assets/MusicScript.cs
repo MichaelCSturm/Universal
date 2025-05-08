@@ -6,12 +6,12 @@ public class MusicScript : MonoBehaviour
     public AudioClip[] playlist;
     public AudioClip[] WinAndLoseSounds;
     public AudioSource WinAndLoseSource;
-    public AudioSource audiosource;
+    private AudioSource audiosource;
     public bool randomPlay = false;
     private int currentClipIndex = 0;
     void Start()
     {
-        //audiosource = FindObjectOfType<AudioSource>();
+        audiosource = FindObjectOfType<AudioSource>();
         audiosource.loop = false;
     }
 

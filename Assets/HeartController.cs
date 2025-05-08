@@ -18,6 +18,9 @@ public class HeartController : MonoBehaviour
             Hearts[1].GetComponent<Renderer>().material = DeadHeartMat;
             Hearts[2].GetComponent<Renderer>().material = DeadHeartMat;
             Hearts[3].GetComponent<Renderer>().material = DeadHeartMat;
+            Animators[1].Play("BreakHeart");
+            Animators[2].Play("BreakHeart");
+            Animators[3].Play("BreakHeart");
         }
     }
     public void TwoLife()
@@ -28,6 +31,8 @@ public class HeartController : MonoBehaviour
             Hearts[1].GetComponent<Renderer>().material = LiveHeartMat;
             Hearts[2].GetComponent<Renderer>().material = DeadHeartMat;
             Hearts[3].GetComponent<Renderer>().material = DeadHeartMat;
+            Animators[2].Play("BreakHeart");
+            Animators[3].Play("BreakHeart");
         }
     }
     public void ThreeLife()
@@ -38,6 +43,8 @@ public class HeartController : MonoBehaviour
             Hearts[1].GetComponent<Renderer>().material = LiveHeartMat;
             Hearts[2].GetComponent<Renderer>().material = LiveHeartMat;
             Hearts[3].GetComponent<Renderer>().material = DeadHeartMat;
+            
+            Animators[3].Play("BreakHeart");
         }
     }
     public void FourLife()

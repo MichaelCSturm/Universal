@@ -188,10 +188,10 @@ public class Master : MonoBehaviour
     public void RandomLevel(int myLevel)
     {
         print("got to random level");
-        int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+        int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 6);
 
         while (RandomLevelToFadeTo == myLevel || RandomLevelToFadeTo == 0) { 
-        RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+        RandomLevelToFadeTo = UnityEngine.Random.Range(1, 6);
             if (RandomLevelToFadeTo != myLevel) 
             {
                 break;
