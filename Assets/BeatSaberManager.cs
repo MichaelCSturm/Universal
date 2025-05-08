@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BeatSaberManager : MonoBehaviour
 {
+    public GameObject Hearts;
     public float waitTime;
     public bool debugMode;
     public GameObject RightHandSpawnPoint;
@@ -159,6 +160,25 @@ public class BeatSaberManager : MonoBehaviour
         }
         // MainMaster.startTimer();
         CreateHitBox();
+        //
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health ==4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
     }
     public void OnFadeComplete()
     {

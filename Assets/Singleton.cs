@@ -21,7 +21,7 @@ public class Singleton
 
         Level = 0;
 
-        Health = 3;
+        Health = 4;
 
         OrignalHealth = Health;
     }
@@ -85,6 +85,6 @@ public class Singleton
     }
     public void ResetHealth()
     {
-        Health = OrignalHealth;
+        Health = 4;
     }
 }

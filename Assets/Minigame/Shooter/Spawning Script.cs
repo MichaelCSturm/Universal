@@ -3,6 +3,7 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject Hearts;
     public GameObject[] enemyPrefabs;
     public float spawnInterval = 2f;
 
@@ -32,6 +33,24 @@ public class EnemySpawner : MonoBehaviour
             MainMaster.levelToLoad = levelToLoad;
         }
         InvokeRepeating(nameof(SpawnEnemy), 1f, spawnInterval);
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
     }
     public void Update()
     {

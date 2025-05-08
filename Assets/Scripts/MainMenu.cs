@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject[] objects;
+    public SteamVR_Behaviour_Pose[] SteamVrBehaviorPoses;
     public bool debugMode;
     public Animator animator;
     public GameObject Master;
@@ -49,7 +52,16 @@ public class MainMenu : MonoBehaviour
     }
     public void ChangeScene()
     {
-
+        foreach (SteamVR_Behaviour_Pose pose in SteamVrBehaviorPoses)
+        {
+            pose.enabled = false;
+            //pose.
+            //pose.OnDisable()
+        }
+        foreach( GameObject stupidvr in objects)
+        {
+            stupidvr.SetActive(false);
+        }
         //MainMaster.RandomLevel(myLevel);
         MainMaster.FadeToLevel(5);
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConstructController : MonoBehaviour
 {
+    public GameObject Hearts;
     public bool debugMode;
     public int points;
     public int[] difficultyWC; //win condition
@@ -40,6 +41,24 @@ public class ConstructController : MonoBehaviour
             MainMaster.debugmode = debugMode;
         }
         StartCoroutine(SpawnGuys());
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {

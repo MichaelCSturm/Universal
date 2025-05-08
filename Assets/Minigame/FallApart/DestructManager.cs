@@ -18,6 +18,7 @@ public static class ClassExtension
 }
 public class DestructManager : MonoBehaviour
 {
+    public GameObject Hearts;
     public Animator animator;
     public GameObject Master;
    // public float speed;
@@ -50,6 +51,24 @@ public class DestructManager : MonoBehaviour
         if (totalBreakables == 0)
         {
             Debug.LogWarning("No Breakable objects found in the scene.");
+        }
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
         }
     }
     void Update()

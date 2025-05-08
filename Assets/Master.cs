@@ -21,7 +21,8 @@ public class Master : MonoBehaviour
     private bool failonce = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
-   
+    public GameObject HealthSystem;
+    //public GameObject AudioController;
     public void Start()
     {
         
@@ -120,6 +121,10 @@ public class Master : MonoBehaviour
             once = true;
         }
     }
+    public int ReturnHealth()
+    {
+        return Singleton.Instance.Health;
+    }
     public int ReturnScore()
     {
         return Singleton.Instance.Score;
@@ -198,6 +203,7 @@ public class Master : MonoBehaviour
         Singleton.Instance.Health = 1;
         if (failonce)
         {
+            PlayLose();
             failonce = false;
             Singleton.Instance.SubtractHealth();
             if (Singleton.Instance.Health <= 0)
@@ -217,7 +223,27 @@ public class Master : MonoBehaviour
         }
 
     }
+    public void PlayLose()
+    {
+        try
+        {
+            GameObject AudioPlayer = GameObject.FindWithTag("MusicPlayer");
+            if (AudioPlayer != null)
+            {
+                MusicScript script = AudioPlayer.GetComponent<MusicScript>();
+                script.PlayLoseSound();
+            }
+            else {
+                print("Hey we dont got a Music Player in this ");
+            }
+        }
+        catch (Exception e) { 
+        
+        print(e.ToString());
+            print("ERRORRR in Master PlayLose()");
+        }
 
+    }
 
     //void Awake()
     //{

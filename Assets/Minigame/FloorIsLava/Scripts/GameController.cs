@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject Hearts;
     public bool debugMode;
     public Animator animator;
     public GameObject Master;
@@ -66,6 +67,24 @@ public class GameController : MonoBehaviour
         if (leveldiff == 3)
         {
             winThreshold = hardLevelPoints;
+        }
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
         }
     }
 

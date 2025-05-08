@@ -17,15 +17,14 @@ TagManager:
   - target
   - enemy
   - Breakable
-
-  - Lava
-  - Safezone
+  - Fire
   - BeatSaberBox
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - floor
+  - 
   - Water
   - UI
   - 
