@@ -1607,6 +1607,7 @@ MonoBehaviour:
   myLevel: 4
   Controller: {fileID: 440140765}
   Timer: 30
+  prettyColors: {fileID: 2100000, guid: 1729b963d59419c4da81ed5799c0ca33, type: 2}
 --- !u!1001 &483004416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2618,6 +2619,7 @@ MonoBehaviour:
   myLevel: 5
   Controller: {fileID: 0}
   Timer: 30
+  prettyColors: {fileID: 0}
 --- !u!1 &899796484
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,11 +41,17 @@ public class GameController : MonoBehaviour
     public AudioSource lavaAudio;
     int leveldiff;
 
-
+    GameObject[] CapsulePlayerScriptHolder;
     // Start is called before the first frame update
     void Start()
     {
-        
+        CapsulePlayerScriptHolder = GameObject.FindGameObjectsWithTag("CapsuleForLavaPlayerScript");
+        foreach (GameObject capsule in CapsulePlayerScriptHolder)
+        {
+            capsule.AddComponent<Player>();
+            Player capPlayer = capsule.GetComponent<Player>();
+            capPlayer.gameControllerScript = this;
+        }
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
@@ -102,7 +108,12 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        newRound = false;
+        foreach (GameObject capsule in CapsulePlayerScriptHolder)
+        { 
+            Player playerscript = capsule.GetComponent<Player>();
+            Destroy(playerscript);
+        }
+            newRound = false;
         Debug.Log("GameOver its over");
 
         MainMaster.FailLevel(myLevel);

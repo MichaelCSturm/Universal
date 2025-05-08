@@ -56,9 +56,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Final
       objectReference: {fileID: 0}
+    - target: {fileID: 4686950722762889475, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
+      propertyPath: m_TagString
+      value: CapsuleForLavaPlayerScript
+      objectReference: {fileID: 0}
     - target: {fileID: 5580279158446405070, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_TagString
       value: Left Hand VR Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784349327912369982, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
+      propertyPath: m_TagString
+      value: CapsuleForLavaPlayerScript
       objectReference: {fileID: 0}
     - target: {fileID: 6075307926185767499, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_TagString
@@ -118,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6987251889199375614, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6987251889199375614, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_BackGroundColor.b

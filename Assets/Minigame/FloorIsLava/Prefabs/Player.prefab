@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 2470949378285356407}
   m_Layer: 0
   m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_TagString: CapsuleForLavaPlayerScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4745,7 +4745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawningScript: {fileID: 0}
-  health: 1
 --- !u!54 &5254825697866232344
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4788,7 +4787,7 @@ GameObject:
   - component: {fileID: 7345198660491616060}
   m_Layer: 0
   m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_TagString: CapsuleForLavaPlayerScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

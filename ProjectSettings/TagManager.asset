@@ -26,6 +26,7 @@ TagManager:
   - Right Hand VR Target
   - Left Leg VR Target
   - Right Leg VR Target
+  - CapsuleForLavaPlayerScript
   layers:
   - Default
   - TransparentFX

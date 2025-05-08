@@ -16,7 +16,7 @@ public class Master : MonoBehaviour
     public string filename = "MyScore.txt";
     public Animator animator;
     public int levelToLoad;
-    public bool debugmode = false;
+    public bool debugmode = true;
     private bool once = true;
     private bool failonce = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
@@ -28,6 +28,7 @@ public class Master : MonoBehaviour
         //int localhealth = Singleton.Instance.ReturnHealth();
         //string newLocalHealth = localhealth.ToString();
         //Debug.Log("HEALTH IS : " + newLocalHealth);
+        debugmode = true;
     }
     public void FadeToLevel(int levelIndex)
     {
@@ -165,27 +166,27 @@ public class Master : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                IncreaseLevelAndLoadNextScene(3);
+                FadeToLevel(3);
             }
             if (Input.GetKeyUp(KeyCode.J))
             {
-                IncreaseLevelAndLoadNextScene(2);
+                FadeToLevel(2);
             }
             if (Input.GetKeyUp(KeyCode.K))
             {
-                IncreaseLevelAndLoadNextScene(1);
+                FadeToLevel(1);
             }
             if (Input.GetKeyUp(KeyCode.U))
             {
-                IncreaseLevelAndLoadNextScene(4);
+                FadeToLevel(4);
             }
             if (Input.GetKeyUp(KeyCode.I))
             {
-                IncreaseLevelAndLoadNextScene(5);
+                FadeToLevel(5);
             }
             if (Input.GetKeyUp(KeyCode.P))
             {
-                IncreaseLevelAndLoadNextScene(0);
+                FadeToLevel(0);
             }
         }
 

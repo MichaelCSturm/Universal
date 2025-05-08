@@ -29,11 +29,15 @@ public class ConstructController : MonoBehaviour
 
     public GameObject Controller;
     public float Timer = 30;
-
+    GameObject camera;
+    public Material prettyColors;
     // Start is called before the first frame update
     void Start()
     {
+        
         Player = GameObject.FindGameObjectWithTag("Player");
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        RenderSettings.skybox = prettyColors;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
