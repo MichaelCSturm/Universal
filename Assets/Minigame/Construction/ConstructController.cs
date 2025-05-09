@@ -83,7 +83,7 @@ public class ConstructController : MonoBehaviour
     void Update()
     {
         Timer = Timer -= Time.deltaTime;
-        if (Timer <= 0 || guyDeathCount == 3)
+        if (Timer <= 0 || guyDeathCount >= 3)
         {
             print("LOOSER YOURE A LOOSER ");
             MainMaster.AddToScore(-1);
