@@ -1583,11 +1583,11 @@ MonoBehaviour:
   Hearts: {fileID: 826097169}
   debugMode: 0
   points: 0
-  difficultyWC: 030000000500000007000000
+  difficultyWC: 020000000200000002000000
   level: 0
   startingGuys: {fileID: 2192852460752673562, guid: b426a1e88611e504589b428cf33a45a6, type: 3}
   maxGuys: 020000000200000002000000
-  speed: 1.5
+  speed: 2
   targets:
   - {fileID: 2143047722}
   - {fileID: 1717863203}
