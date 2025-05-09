@@ -67,7 +67,7 @@ public class TowardsExit : MonoBehaviour
             {
 
                 Controller.AddPoint();
-                Controller.killGuy();
+                Controller.KillGuy();
 
                 targetRenderer.material.color = ogColor;
 
