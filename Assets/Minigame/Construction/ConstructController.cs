@@ -154,6 +154,8 @@ public class ConstructController : MonoBehaviour
     public void NumGuysLost()
     {
         guyDeathCount++;
+        Debug.Log("oh no he died");
+        Debug.Log("Death count is: " + guyDeathCount);
     }
         
 }

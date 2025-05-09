@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106681a999fcc5247ba602e65947425d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contructController: {fileID: 440140768}
+  constructController: {fileID: 440140768}
 --- !u!1 &330259323
 GameObject:
   m_ObjectHideFlags: 0
