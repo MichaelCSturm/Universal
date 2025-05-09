@@ -58,6 +58,22 @@ public class ScoreContainer : MonoBehaviour
                 currentPos.x += spaceInbetweenNumbers;
                 i = i + 1;
             }
+            /// Now we iterate through bottom half
+            /// 
+            i = length;
+            currentPos = scorePlacement.transform.position;
+            currentPos.x -= spaceInbetweenNumbers;
+            while (i != 0)
+            {
+                char c = characters[i];
+                string cToString = c.ToString();
+                Instantiate(gameObjects[int.Parse(cToString)], currentPos, Quaternion.identity);
+                currentPos.x -= spaceInbetweenNumbers;
+                i = i - 1 ;
+            }
+
+
+
 
         }
     }
