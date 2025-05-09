@@ -7,6 +7,7 @@ using Valve.VR;
 
 public class MainMenu : MonoBehaviour
 {
+    public Material sky;
     public GameObject Player;
     public GameObject[] objects;
     public SteamVR_Behaviour_Pose[] SteamVrBehaviorPoses;
@@ -21,6 +22,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUI;
     void Start()
     {
+        RenderSettings.skybox = sky;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();

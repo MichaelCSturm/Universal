@@ -18,6 +18,7 @@ public static class ClassExtension
 }
 public class DestructManager : MonoBehaviour
 {
+    public Material Skybox;
     public GameObject Player;
     public GameObject Hearts;
     public Animator animator;
@@ -39,6 +40,7 @@ public class DestructManager : MonoBehaviour
 
     void Start()
     {
+        RenderSettings.skybox = Skybox;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();

@@ -2031,6 +2031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2ebb610a898ad4ea80a46f68a51622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sky: {fileID: 2100000, guid: 51b74d7bad397457d883c5940f7664d8, type: 2}
   HealthHolder: {fileID: 4743283044607978024, guid: 3ad8863ab942d1844ad36c13f922c6a5, type: 3}
   Gat: {fileID: 6606398125013203769, guid: 62d99c012ebd7da409bb5280d0bb474e, type: 3}
   Player: {fileID: 0}

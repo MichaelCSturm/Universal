@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
+    public Material sky;
     public GameObject player;
     public GameObject Hearts;
     public bool debugMode;
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RenderSettings.skybox = sky;
         CapsulePlayerScriptHolder = GameObject.FindGameObjectsWithTag("CapsuleForLavaPlayerScript");
         foreach (GameObject capsule in CapsulePlayerScriptHolder)
         {

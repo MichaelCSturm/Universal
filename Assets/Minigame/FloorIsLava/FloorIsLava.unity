@@ -5206,6 +5206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7990756921b24e955f788c1141ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sky: {fileID: 0}
   player: {fileID: 0}
   Hearts: {fileID: 170600059}
   debugMode: 0
@@ -93567,6 +93568,63 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &1819878081
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401940090561924498, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615785219519790038, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
+      propertyPath: m_Name
+      value: PlayerSpawner (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0351520064afe5b49a50ee2275a9d199, type: 3}
 --- !u!1 &1838664931
 GameObject:
   m_ObjectHideFlags: 0
@@ -108918,6 +108976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7990756921b24e955f788c1141ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sky: {fileID: 2100000, guid: 3a6db933fef1d4c759bf21220420505f, type: 2}
   player: {fileID: 0}
   Hearts: {fileID: 170600059}
   debugMode: 0
@@ -109011,3 +109070,4 @@ SceneRoots:
   - {fileID: 2105591324}
   - {fileID: 170600058}
   - {fileID: 1966101604}
+  - {fileID: 1819878081}

@@ -5358,6 +5358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92943bfcf0dbee7408f8004681f08732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sky: {fileID: 2100000, guid: bb3b181621e3491428a54861c2b18290, type: 2}
   Player: {fileID: 0}
   objects:
   - {fileID: 0}

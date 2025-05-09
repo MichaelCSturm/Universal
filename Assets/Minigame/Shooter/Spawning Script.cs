@@ -3,6 +3,7 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public Material sky;
     private GameObject gatToPutAway;
     public GameObject HealthHolder;
     private GameObject HealthHolderToPutAway;
@@ -29,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        RenderSettings.skybox = sky;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         // The reason it has to be an object inside of the actual scene is because unity likes to not place nice with calling Update() despite being insiated
