@@ -235,7 +235,7 @@ public class BeatSaberManager : MonoBehaviour
                     MainMaster.AddToScore(-1);
                     MainMaster.FailLevel(myLevel);
                 }
-                if (GoodScore >= 2)
+                if (GoodScore >= 15)
                 {
                     print("WINNINNNG");
                     MainMaster.AddToScore(1);
