@@ -3,6 +3,9 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    private GameObject gatToPutAway;
+    public GameObject HealthHolder;
+    public GameObject Gat;
     public GameObject Player;
     public GameObject Hearts;
     public GameObject[] enemyPrefabs;
@@ -54,18 +57,22 @@ public class EnemySpawner : MonoBehaviour
         }
         MainMaster.Player = Player;
         print(health.ToString());
+        GameObject rightHand = GameObject.FindGameObjectWithTag("Right Hand Trigger");
+        gatToPutAway= Instantiate(Gat, rightHand.transform);
     }
     public void Update()
     {
         if (points >= PointsToWin && startLoadingLevel)// WIN CON RIGHT HERE
         {
             print(" AY WE WINNING SWITCHING TO THE NEXT SCENE");
-            MainMaster.FadeToLevel(2);
+            Destroy(gatToPutAway);
+            MainMaster.RandomLevel(myLevel);
             startLoadingLevel = false;
         }
     }
     public void GameOver()
     {
+        Destroy(gatToPutAway);
         MainMaster.FailLevel(myLevel);
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
