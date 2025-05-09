@@ -228,7 +228,7 @@ public class BeatSaberManager : MonoBehaviour
                 {
                     BadScore = BadScore + 1;
                 }
-                if(BadScore >= 2)
+                if(BadScore >= 10)
                 {
                     print("YO WE LOST");
                     print(MainMaster.TimeManager().ToString());
