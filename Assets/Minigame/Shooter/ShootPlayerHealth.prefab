@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8417501798603546418}
   m_Layer: 0
   m_Name: ShootPlayerHealth
-  m_TagString: Player
+  m_TagString: ShooterHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

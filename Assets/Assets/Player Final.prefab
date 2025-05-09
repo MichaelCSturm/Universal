@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Final
       objectReference: {fileID: 0}
+    - target: {fileID: 4194724970060970095, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
+      propertyPath: m_TagString
+      value: Hip
+      objectReference: {fileID: 0}
     - target: {fileID: 4686950722762889475, guid: 66f0f36c430944f4c9afb32db1992b9f, type: 3}
       propertyPath: m_TagString
       value: CapsuleForLavaPlayerScript

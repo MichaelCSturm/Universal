@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     private GameObject gatToPutAway;
     public GameObject HealthHolder;
+    private GameObject HealthHolderToPutAway;
     public GameObject Gat;
     public GameObject Player;
     public GameObject Hearts;
@@ -59,12 +60,17 @@ public class EnemySpawner : MonoBehaviour
         print(health.ToString());
         GameObject rightHand = GameObject.FindGameObjectWithTag("Right Hand Trigger");
         gatToPutAway= Instantiate(Gat, rightHand.transform);
+        GameObject hip = GameObject.FindGameObjectWithTag("Hip");
+        HealthHolderToPutAway = Instantiate(HealthHolder, hip.transform);
+        HealthHolderToPutAway.GetComponent<playerHealth>().spawningScript = this;
+        //playerHealth.spawningScript
     }
     public void Update()
     {
         if (points >= PointsToWin && startLoadingLevel)// WIN CON RIGHT HERE
         {
             print(" AY WE WINNING SWITCHING TO THE NEXT SCENE");
+            Destroy(HealthHolderToPutAway);
             Destroy(gatToPutAway);
             MainMaster.RandomLevel(myLevel);
             startLoadingLevel = false;
@@ -72,6 +78,7 @@ public class EnemySpawner : MonoBehaviour
     }
     public void GameOver()
     {
+        Destroy(HealthHolderToPutAway);
         Destroy(gatToPutAway);
         MainMaster.FailLevel(myLevel);
     }

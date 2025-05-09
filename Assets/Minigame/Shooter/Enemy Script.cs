@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("ShooterHealth").transform;
         timeOffset = Random.Range(0f, 100f);
 
         switch (type)

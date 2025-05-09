@@ -32,6 +32,8 @@ TagManager:
   - Right Hand Trigger
   - Left Leg Trigger
   - Right Leg Trigger
+  - Hip
+  - ShooterHealth
   layers:
   - Default
   - TransparentFX
