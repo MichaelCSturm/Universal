@@ -28,7 +28,7 @@ public class ConstructController : MonoBehaviour
     public int myLevel = 5;
 
     public GameObject Controller;
-    public float Timer = 45;
+    public float Timer = 46;
     GameObject camera;
     public Material prettyColors;
     // Start is called before the first frame update

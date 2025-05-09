@@ -181,7 +181,7 @@ MonoBehaviour:
   gunsound: {fileID: 1888667422144736079}
   projectilePrefab: {fileID: 8686030361222199365, guid: f7b4462c6afdbcf46b4e7d1ca4b8c98c, type: 3}
   shootingPoint: {fileID: 6939463750837491641}
-  projectileSpeed: 10
+  projectileSpeed: 20
 --- !u!1 &7376370898960711063
 GameObject:
   m_ObjectHideFlags: 0

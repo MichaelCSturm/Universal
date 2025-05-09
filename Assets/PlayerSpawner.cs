@@ -12,12 +12,14 @@ public class PlayerSpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
-            Instantiate(playerFinal, transform.position, transform.rotation);
+            GameObject newPlayer = Instantiate(playerFinal, transform.position, transform.rotation);
+            newPlayer.transform.localScale = transform.localScale;
         }
         else
         {
             player.transform.position = transform.position;
             player.transform.rotation = transform.rotation;
+            player.transform.localScale = transform.localScale;
         }
     }
 
