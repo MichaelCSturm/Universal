@@ -31,6 +31,8 @@ public class ConstructController : MonoBehaviour
     public float Timer = 46;
     GameObject camera;
     public Material prettyColors;
+
+    private int guyDeathCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,9 @@ public class ConstructController : MonoBehaviour
             MainMaster.levelToLoad = levelToLoad;
             MainMaster.debugmode = debugMode;
         }
+
+        guyDeathCount = 0;
+
         StartCoroutine(SpawnGuys());
         int health = MainMaster.ReturnHealth();
         HeartController HScript = Hearts.GetComponent<HeartController>();
@@ -78,7 +83,7 @@ public class ConstructController : MonoBehaviour
     void Update()
     {
         Timer = Timer -= Time.deltaTime;
-        if (Timer <= 0)
+        if (Timer <= 0 || guyDeathCount == 3)
         {
             print("LOOSER YOURE A LOOSER ");
             MainMaster.AddToScore(-1);
@@ -142,9 +147,13 @@ public class ConstructController : MonoBehaviour
     {
         points++;
     }
-    public void killGuy()
+    public void KillGuy()
     {
         guys--;
+    }
+    public void NumGuysLost()
+    {
+        guyDeathCount++;
     }
         
 }

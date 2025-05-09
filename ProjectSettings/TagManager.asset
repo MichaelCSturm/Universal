@@ -34,6 +34,7 @@ TagManager:
   - Right Leg Trigger
   - Hip
   - ShooterHealth
+  - Guy
   layers:
   - Default
   - TransparentFX
