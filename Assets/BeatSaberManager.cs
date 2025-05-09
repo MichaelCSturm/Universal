@@ -162,6 +162,18 @@ public class BeatSaberManager : MonoBehaviour
             MainMaster.debugmode = debugMode;
         }
         // MainMaster.startTimer();
+
+
+        HeadTrigger = GameObject.FindGameObjectWithTag("Head Trigger");
+        RightArmTrigger = GameObject.FindGameObjectWithTag("Right Hand Trigger");
+        LeftArmTrigger = GameObject.FindGameObjectWithTag("Left Hand Trigger");
+        RightLegTrigger = GameObject.FindGameObjectWithTag("Right Leg Trigger");
+        LeftLegTrigger = GameObject.FindGameObjectWithTag("Left Leg Trigger");
+
+
+
+
+        //CapsulePlayerScriptHolder = GameObject.FindGameObjectsWithTag("CapsuleForLavaPlayerScript");
         CreateHitBox();
         //
         int health = MainMaster.ReturnHealth();
@@ -185,6 +197,7 @@ public class BeatSaberManager : MonoBehaviour
         MainMaster.Player = Player;
         Console.WriteLine("Health: ",health.ToString());
 
+       
     }
     public void OnFadeComplete()
     {

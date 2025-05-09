@@ -14,6 +14,11 @@ public class PlayerSpawner : MonoBehaviour
         {
             Instantiate(playerFinal, transform.position, transform.rotation);
         }
+        else
+        {
+            player.transform.position = transform.position;
+            player.transform.rotation = transform.rotation;
+        }
     }
 
     
