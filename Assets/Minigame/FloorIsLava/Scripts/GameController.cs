@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
+    public GameObject ScoreController;
     public Material sky;
     public GameObject player;
     public GameObject Hearts;
@@ -99,7 +100,9 @@ public class GameController : MonoBehaviour
         }
         MainMaster.Player = player;
         Console.WriteLine("Health: ", health.ToString());
-
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
     }
 
     // Update is called once per frame

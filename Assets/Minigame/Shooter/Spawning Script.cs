@@ -3,6 +3,7 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject ScoreController;
     public Material sky;
     private GameObject gatToPutAway;
     public GameObject HealthHolder;
@@ -66,6 +67,9 @@ public class EnemySpawner : MonoBehaviour
         HealthHolderToPutAway = Instantiate(HealthHolder, hip.transform);
         HealthHolderToPutAway.GetComponent<playerHealth>().spawningScript = this;
         //playerHealth.spawningScript
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
     }
     public void Update()
     {

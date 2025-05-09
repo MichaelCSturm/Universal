@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class ConstructController : MonoBehaviour
 {
+    public GameObject ScoreController;
     public GameObject Player;
     public GameObject Hearts;
     public bool debugMode;
@@ -73,6 +74,10 @@ public class ConstructController : MonoBehaviour
         }
         MainMaster.Player = Player;
         Console.WriteLine("Health: ", health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
+
 
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.

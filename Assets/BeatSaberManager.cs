@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class BeatSaberManager : MonoBehaviour
 {
+    public GameObject ScoreController;
     public GameObject Hearts;
     public float waitTime;
     public bool debugMode;
@@ -196,8 +197,11 @@ public class BeatSaberManager : MonoBehaviour
         }
         MainMaster.Player = Player;
         Console.WriteLine("Health: ",health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
 
-       
+
     }
     public void OnFadeComplete()
     {

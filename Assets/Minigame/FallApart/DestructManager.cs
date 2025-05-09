@@ -18,6 +18,7 @@ public static class ClassExtension
 }
 public class DestructManager : MonoBehaviour
 {
+    public GameObject ScoreController;
     public Material Skybox;
     public GameObject Player;
     public GameObject Hearts;
@@ -75,6 +76,9 @@ public class DestructManager : MonoBehaviour
         }
         MainMaster.Player = Player;
         Console.WriteLine("Health: ", health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
 
     }
     void Update()
