@@ -7,7 +7,7 @@
 
 ## Software Requirements:
 - SteamVR
-- Virtual Universe Build File
+- Virtual Universe Capstone.zip under Releases
 
 ## How to Set Up:
 - Download SteamVR
