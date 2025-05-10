@@ -12055,6 +12055,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5282b705909de854f81428abea811397, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f3439e15fd40d140a06c03dc795cc4a, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6acd6f1e20937c149b6775175b2d4363, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6704ae29a0b0d9745aa3298c5a0ef2cb, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9554b09e85a11ba40a8d7193e06c845b, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 716b145469d87434abd4ec79efc675fa, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0af8347e7077d824d8cd268250abd96c, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3eeddde2a77d01c45b9abc41d79ecd8f, type: 3}
+    - target: {fileID: 1914149360277704456, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
+      propertyPath: playlist.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: a2f36064b4878a24c94ef78383449cba, type: 3}
     - target: {fileID: 6145502628358991021, guid: 8cf649aad5f39b14692e843bdca7791d, type: 3}
       propertyPath: m_Name
       value: MusicPlayer

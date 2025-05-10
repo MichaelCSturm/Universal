@@ -5206,6 +5206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7990756921b24e955f788c1141ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreController: {fileID: 0}
   sky: {fileID: 0}
   player: {fileID: 0}
   Hearts: {fileID: 170600059}
@@ -10336,7 +10337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833273170995858937, guid: dd7743f6ed6ecfd429fa1d7a305fc24c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.015999794
+      value: 0.098
       objectReference: {fileID: 0}
     - target: {fileID: 5833273170995858937, guid: dd7743f6ed6ecfd429fa1d7a305fc24c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20569,6 +20570,10 @@ PrefabInstance:
     - target: {fileID: 1500025412882131516, guid: 7edb53a511a165648a599ced75b4dfbb, type: 3}
       propertyPath: m_Name
       value: ScoreControler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500025412882131516, guid: 7edb53a511a165648a599ced75b4dfbb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2850119955328520615, guid: 7edb53a511a165648a599ced75b4dfbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -109037,7 +109042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7990756921b24e955f788c1141ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sky: {fileID: 2100000, guid: c82a334cf5a5e47978749c210cee72a7, type: 2}
+  ScoreController: {fileID: 0}
+  sky: {fileID: 2100000, guid: 49bd9e4f751ae9548975d6f13e6e4373, type: 2}
   player: {fileID: 0}
   Hearts: {fileID: 170600059}
   debugMode: 0

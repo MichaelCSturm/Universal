@@ -1122,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreControler
       objectReference: {fileID: 0}
+    - target: {fileID: 1500025412882131516, guid: 7edb53a511a165648a599ced75b4dfbb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2850119955328520615, guid: 7edb53a511a165648a599ced75b4dfbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.02
@@ -2041,7 +2045,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de31e6e5d1065744e8459d2fa3e969b6, type: 2}
+  - {fileID: 2100000, guid: ba0d3774947d94d48b2856f06ac3f0c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2088,6 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2ebb610a898ad4ea80a46f68a51622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreController: {fileID: 0}
   sky: {fileID: 2100000, guid: 51b74d7bad397457d883c5940f7664d8, type: 2}
   HealthHolder: {fileID: 4743283044607978024, guid: 3ad8863ab942d1844ad36c13f922c6a5, type: 3}
   Gat: {fileID: 6606398125013203769, guid: 62d99c012ebd7da409bb5280d0bb474e, type: 3}
