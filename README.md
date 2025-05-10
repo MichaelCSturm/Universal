@@ -15,6 +15,7 @@
 - Connect headset to PC
 - Connect Vive 3.0 Trackers dongles to the PC
 - Turn on Trackers, Headset, and Controllers
+- Under the tripple dashes in the top left corner click it, then under devices go pair trackers and controllers
 - Open SteamVR
 - Under the tripple dashes in the top left corner click it, then under devices go to Manage Trackers
 - Now edit the waist tracker's role waist, left foot tracker's role left foot and right foot tracker's role right foot
