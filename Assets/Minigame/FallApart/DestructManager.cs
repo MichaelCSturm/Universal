@@ -18,6 +18,10 @@ public static class ClassExtension
 }
 public class DestructManager : MonoBehaviour
 {
+    public GameObject ScoreController;
+    public Material Skybox;
+    public GameObject Player;
+    public GameObject Hearts;
     public Animator animator;
     public GameObject Master;
    // public float speed;
@@ -37,6 +41,7 @@ public class DestructManager : MonoBehaviour
 
     void Start()
     {
+        RenderSettings.skybox = Skybox;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
@@ -51,6 +56,30 @@ public class DestructManager : MonoBehaviour
         {
             Debug.LogWarning("No Breakable objects found in the scene.");
         }
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = Player;
+        Console.WriteLine("Health: ", health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
+
     }
     void Update()
     {
@@ -60,7 +89,7 @@ public class DestructManager : MonoBehaviour
             print("LOOSER YOURE A LOOSER ");
             MainMaster.AddToScore(-1);
 
-            MainMaster.RandomLevel(myLevel);
+            MainMaster.FailLevel(myLevel);
         }
         if (!winDisplayed)
         {

@@ -127,6 +127,18 @@ PrefabInstance:
       value: BeatSaberBox
       objectReference: {fileID: 0}
     - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -165,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3650203931644156290, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4388253079088184671, guid: 60b7510eb4e8072498a5cfafd86e7dd4, type: 3}
       propertyPath: m_Materials.Array.data[0]

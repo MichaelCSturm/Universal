@@ -4,7 +4,8 @@ using UnityEngine;
 public class MusicScript : MonoBehaviour
 {
     public AudioClip[] playlist;
-    
+    public AudioClip[] WinAndLoseSounds;
+    public AudioSource WinAndLoseSource;
     private AudioSource audiosource;
     public bool randomPlay = false;
     private int currentClipIndex = 0;
@@ -55,5 +56,15 @@ public class MusicScript : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+    }
+    public void PlayLoseSound()
+    {
+        WinAndLoseSource.clip = WinAndLoseSounds[1];
+        WinAndLoseSource.Play();
+    }
+    public void PlayWinSound()
+    {
+        WinAndLoseSource.clip = WinAndLoseSounds[0];
+        WinAndLoseSource.Play();
     }
 }

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class MainMenu : MonoBehaviour
 {
+    public Material sky;
+    public GameObject Player;
+    public GameObject[] objects;
+    public SteamVR_Behaviour_Pose[] SteamVrBehaviorPoses;
     public bool debugMode;
     public Animator animator;
     public GameObject Master;
@@ -17,6 +22,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUI;
     void Start()
     {
+        RenderSettings.skybox = sky;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
@@ -30,18 +36,13 @@ public class MainMenu : MonoBehaviour
        // TextMeshPro scoreText = score.GetComponent<TextMeshPro>();
         string realText = "High Score " + HighScore;
         textMeshProUGUI.text = realText;
+        MainMaster.Player = Player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (debugMode)
-        {
-            if (Input.GetKeyUp(KeyCode.Escape))
-            {
-                MainMaster.IncreaseLevelAndLoadNextScene(3);
-            }
-        }
+        
     }
     public void OnFadeComplete() // has to be here or animator will freak out
     {
@@ -49,11 +50,15 @@ public class MainMenu : MonoBehaviour
     }
     public void ChangeScene()
     {
-
-        MainMaster.RandomLevel(myLevel);
+        
+        MainMaster.RandomLevel(0);
     }
     public void TutorialViewer()
     {
 
+    }
+    public void ThrowText()
+    {
+        print("There is a click");
     }
 }

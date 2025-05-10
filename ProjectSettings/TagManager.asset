@@ -17,15 +17,29 @@ TagManager:
   - target
   - enemy
   - Breakable
-
-  - Lava
-  - Safezone
+  - Fire
   - BeatSaberBox
+  - MusicPlayer
+  - Safezone
+  - Lava
+  - Left Hand VR Target
+  - Right Hand VR Target
+  - Left Leg VR Target
+  - Right Leg VR Target
+  - CapsuleForLavaPlayerScript
+  - Head Trigger
+  - Left Hand Trigger
+  - Right Hand Trigger
+  - Left Leg Trigger
+  - Right Leg Trigger
+  - Hip
+  - ShooterHealth
+  - Guy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - floor
+  - 
   - Water
   - UI
   - 

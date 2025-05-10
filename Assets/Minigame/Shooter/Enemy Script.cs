@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,9 +14,11 @@ public class Enemy : MonoBehaviour
     private float timeOffset;
     public GameObject manger;
 
+    public ParticleSystem hitParticle;
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("ShooterHealth").transform;
         timeOffset = Random.Range(0f, 100f);
 
         switch (type)
@@ -47,6 +51,8 @@ public class Enemy : MonoBehaviour
                 MoveFinalBoss();
                 break;
         }
+
+
     }
 
     void MoveBasic()
@@ -73,7 +79,9 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("projectile"))
         {
+            hitParticle.Play();
             health--;
+            StartCoroutine(ChangeColor());
             if (health <= 0)
             {
                 //manger.GetComponent<SpawningScript>
@@ -81,5 +89,25 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    IEnumerator ChangeColor()
+    {
+        Color myColor = GetComponent<Renderer>().material.color;
+
+        Renderer targetRenderer = gameObject.GetComponent<Renderer>();
+        if (targetRenderer != null)
+        {
+            targetRenderer.material.color = Color.red;
+        }
+
+
+        yield return new WaitForSecondsRealtime(.5f);
+
+        if (targetRenderer != null)
+        {
+            targetRenderer.material.color = myColor;
+        }
+
     }
 }

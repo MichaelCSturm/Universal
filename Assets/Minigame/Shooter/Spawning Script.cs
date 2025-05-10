@@ -3,6 +3,14 @@ using static Enemy;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject ScoreController;
+    public Material sky;
+    private GameObject gatToPutAway;
+    public GameObject HealthHolder;
+    private GameObject HealthHolderToPutAway;
+    public GameObject Gat;
+    public GameObject Player;
+    public GameObject Hearts;
     public GameObject[] enemyPrefabs;
     public float spawnInterval = 2f;
 
@@ -18,11 +26,12 @@ public class EnemySpawner : MonoBehaviour
     public GameObject selfManager;
     public int destroyedEnemys = 0;
     private bool startLoadingLevel = true;
-    
-
+    public int myLevel;
+  
 
     void Start()
     {
+        RenderSettings.skybox = sky;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         // The reason it has to be an object inside of the actual scene is because unity likes to not place nice with calling Update() despite being insiated
@@ -32,15 +41,52 @@ public class EnemySpawner : MonoBehaviour
             MainMaster.levelToLoad = levelToLoad;
         }
         InvokeRepeating(nameof(SpawnEnemy), 1f, spawnInterval);
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = Player;
+        print(health.ToString());
+        GameObject rightHand = GameObject.FindGameObjectWithTag("Right Hand Trigger");
+        gatToPutAway= Instantiate(Gat, rightHand.transform);
+        GameObject hip = GameObject.FindGameObjectWithTag("Hip");
+        HealthHolderToPutAway = Instantiate(HealthHolder, hip.transform);
+        HealthHolderToPutAway.GetComponent<playerHealth>().spawningScript = this;
+        //playerHealth.spawningScript
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
     }
     public void Update()
     {
         if (points >= PointsToWin && startLoadingLevel)// WIN CON RIGHT HERE
         {
             print(" AY WE WINNING SWITCHING TO THE NEXT SCENE");
-            MainMaster.FadeToLevel(2);
+            Destroy(HealthHolderToPutAway);
+            Destroy(gatToPutAway);
+            MainMaster.RandomLevel(myLevel);
             startLoadingLevel = false;
         }
+    }
+    public void GameOver()
+    {
+        Destroy(HealthHolderToPutAway);
+        Destroy(gatToPutAway);
+        MainMaster.FailLevel(myLevel);
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {

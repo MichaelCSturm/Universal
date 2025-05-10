@@ -12,19 +12,23 @@ using System.Linq;
 
 public class Master : MonoBehaviour
 {
-    
+    public GameObject Player;
     public string filename = "MyScore.txt";
     public Animator animator;
     public int levelToLoad;
-    public bool debugmode = false;
+    public bool debugmode = true;
     private bool once = true;
     private bool failonce = true;
     //public float timePassed = Singleton.Instance.ElapsedTime;
     List<string> linesList = new List<string>();
-   
+    public GameObject HealthSystem;
+    //public GameObject AudioController;
     public void Start()
     {
-        
+        //int localhealth = Singleton.Instance.ReturnHealth();
+        //string newLocalHealth = localhealth.ToString();
+        //Debug.Log("HEALTH IS : " + newLocalHealth);
+        debugmode = true;
     }
     public void FadeToLevel(int levelIndex)
     {
@@ -37,6 +41,8 @@ public class Master : MonoBehaviour
     }
     public void OnFadeComplete()
     {
+        failonce = true;
+        //Player.SetActive(false);
         print("on fade complete");
         SceneManager.LoadScene(levelToLoad);
     }
@@ -120,6 +126,10 @@ public class Master : MonoBehaviour
             once = true;
         }
     }
+    public int ReturnHealth()
+    {
+        return Singleton.Instance.Health;
+    }
     public int ReturnScore()
     {
         return Singleton.Instance.Score;
@@ -154,14 +164,32 @@ public class Master : MonoBehaviour
         Timer();
         if (debugmode)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Escape))
             {
-                //FailLevel();
-                print(GetHighScores());
+                FadeToLevel(3);
             }
-
+            if (Input.GetKeyUp(KeyCode.J))
+            {
+                FadeToLevel(2);
+            }
+            if (Input.GetKeyUp(KeyCode.K))
+            {
+                FadeToLevel(1);
+            }
+            if (Input.GetKeyUp(KeyCode.U))
+            {
+                FadeToLevel(4);
+            }
+            if (Input.GetKeyUp(KeyCode.I))
+            {
+                FadeToLevel(5);
+            }
+            if (Input.GetKeyUp(KeyCode.P))
+            {
+                FadeToLevel(0);
+            }
         }
-        
+
     }
     public void IncreaseLevel()
     {
@@ -179,10 +207,10 @@ public class Master : MonoBehaviour
     public void RandomLevel(int myLevel)
     {
         print("got to random level");
-        int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 5);
+        int RandomLevelToFadeTo = UnityEngine.Random.Range(0, 6);
 
-        while (RandomLevelToFadeTo == myLevel || RandomLevelToFadeTo == 0 || RandomLevelToFadeTo == 2) { 
-        RandomLevelToFadeTo = UnityEngine.Random.Range(0, 6);
+        while (RandomLevelToFadeTo == myLevel || RandomLevelToFadeTo == 0) { 
+        RandomLevelToFadeTo = UnityEngine.Random.Range(1, 6);
             if (RandomLevelToFadeTo != myLevel) 
             {
                 break;
@@ -190,15 +218,18 @@ public class Master : MonoBehaviour
         }
         print("going to level fade");
         FadeToLevel(RandomLevelToFadeTo);
+        //FadeToLevel(3);
     }
     public void FailLevel(int myLevel)
     {
         print("fail level called");
-        Singleton.Instance.Health = 1;
+        //Singleton.Instance.Health = 1;
         if (failonce)
         {
+            PlayLose();
             failonce = false;
             Singleton.Instance.SubtractHealth();
+            //print(Singleton.Instance.Health.ToString());
             if (Singleton.Instance.Health <= 0)
             {
                 var score = ReturnScore().ToString();
@@ -209,13 +240,38 @@ public class Master : MonoBehaviour
                 Singleton.Instance.ResetTimer();
                 SaveScore();
                 ResetScore();
-                RandomLevel(myLevel);
+                //RandomLevel(myLevel);
+                FadeToLevel(0);
+            }
+            else 
+            {
+                RandomLevel(0);
             }
 
         }
 
     }
+    public void PlayLose()
+    {
+        try
+        {
+            GameObject AudioPlayer = GameObject.FindWithTag("MusicPlayer");
+            if (AudioPlayer != null)
+            {
+                MusicScript script = AudioPlayer.GetComponent<MusicScript>();
+                script.PlayLoseSound();
+            }
+            else {
+                print("Hey we dont got a Music Player in this ");
+            }
+        }
+        catch (Exception e) { 
+        
+        print(e.ToString());
+            print("ERRORRR in Master PlayLose()");
+        }
 
+    }
 
     //void Awake()
     //{

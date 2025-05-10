@@ -21,6 +21,10 @@ public class heightCon : MonoBehaviour
 
     void Start()
     {
+        TrackerConnections[0].controller = GameObject.FindGameObjectWithTag("Left Leg VR Target");
+        TrackerConnections[1].controller = GameObject.FindGameObjectWithTag("Right Leg VR Target");
+        TrackerConnections[2].controller = GameObject.FindGameObjectWithTag("Right Hand VR Target");
+        TrackerConnections[3].controller = GameObject.FindGameObjectWithTag("Left Hand VR Target");
         foreach (var tracker in TrackerConnections)
         {
             tracker.offset = tracker.bar.transform.position.y - tracker.controller.transform.position.y;

@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
+    public GameObject ScoreController;
+    public Material sky;
+    public GameObject player;
+    public GameObject Hearts;
     public bool debugMode;
     public Animator animator;
     public GameObject Master;
@@ -38,10 +43,18 @@ public class GameController : MonoBehaviour
     public AudioSource lavaAudio;
     int leveldiff;
 
+    GameObject[] CapsulePlayerScriptHolder;
     // Start is called before the first frame update
     void Start()
     {
-        
+        RenderSettings.skybox = sky;
+        CapsulePlayerScriptHolder = GameObject.FindGameObjectsWithTag("CapsuleForLavaPlayerScript");
+        foreach (GameObject capsule in CapsulePlayerScriptHolder)
+        {
+            capsule.AddComponent<Player>();
+            Player capPlayer = capsule.GetComponent<Player>();
+            capPlayer.gameControllerScript = this;
+        }
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
@@ -67,6 +80,29 @@ public class GameController : MonoBehaviour
         {
             winThreshold = hardLevelPoints;
         }
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = player;
+        Console.WriteLine("Health: ", health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
     }
 
     // Update is called once per frame
@@ -77,8 +113,14 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        newRound = false;
+        foreach (GameObject capsule in CapsulePlayerScriptHolder)
+        { 
+            Player playerscript = capsule.GetComponent<Player>();
+            Destroy(playerscript);
+        }
+            newRound = false;
         Debug.Log("GameOver its over");
+
         MainMaster.FailLevel(myLevel);
         //Add the logic for game ending
     }

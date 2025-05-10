@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ConstructController : MonoBehaviour
 {
+    public GameObject ScoreController;
+    public GameObject Player;
+    public GameObject Hearts;
     public bool debugMode;
     public int points;
     public int[] difficultyWC; //win condition
@@ -25,11 +29,18 @@ public class ConstructController : MonoBehaviour
     public int myLevel = 5;
 
     public GameObject Controller;
-    public float Timer = 30;
+    public float Timer = 46;
+    GameObject camera;
+    public Material prettyColors;
 
+    private int guyDeathCount = 0;
     // Start is called before the first frame update
     void Start()
     {
+        
+        Player = GameObject.FindGameObjectWithTag("Player");
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        RenderSettings.skybox = prettyColors;
         GameObject ObjectMaster = Instantiate(Master, new Vector3(0, 0, 0), Quaternion.identity);
         MainMaster = ObjectMaster.GetComponent<Master>();
         //MainMaster = new Master();
@@ -39,7 +50,35 @@ public class ConstructController : MonoBehaviour
             MainMaster.levelToLoad = levelToLoad;
             MainMaster.debugmode = debugMode;
         }
+
+        guyDeathCount = 0;
+
         StartCoroutine(SpawnGuys());
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = Player;
+        Console.WriteLine("Health: ", health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
+
+
     }
     public void OnFadeComplete() // The animation will freak out if this is not here.
     {
@@ -49,12 +88,13 @@ public class ConstructController : MonoBehaviour
     void Update()
     {
         Timer = Timer -= Time.deltaTime;
-        if (Timer <= 0)
+        if (Timer <= 0 || guyDeathCount >= 3)
         {
             print("LOOSER YOURE A LOOSER ");
             MainMaster.AddToScore(-1);
 
-            MainMaster.RandomLevel(myLevel);
+            //MainMaster.RandomLevel(myLevel);
+            MainMaster.FailLevel(myLevel);
         }
         if (points == difficultyWC[level])
         {
@@ -112,9 +152,15 @@ public class ConstructController : MonoBehaviour
     {
         points++;
     }
-    public void killGuy()
+    public void KillGuy()
     {
         guys--;
+    }
+    public void NumGuysLost()
+    {
+        guyDeathCount++;
+        Debug.Log("oh no he died");
+        Debug.Log("Death count is: " + guyDeathCount);
     }
         
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoadController : MonoBehaviour
 {
+    public GameObject Player;
+    public GameObject Hearts;
     public GameObject road;
     private GameObject currentObstacle;
     public float speed = 1f;
@@ -76,7 +78,25 @@ public class RoadController : MonoBehaviour
             MainMaster.animator = animator;
             MainMaster.levelToLoad = levelToLoad;
         }
-
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health == 4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = Player;
     }
 
     // Update is called once per frame

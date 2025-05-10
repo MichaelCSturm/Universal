@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 //using static UnityEditor.FilePathAttribute;
 
 public class BeatSaberManager : MonoBehaviour
 {
+    public GameObject ScoreController;
+    public GameObject Hearts;
     public float waitTime;
     public bool debugMode;
     public GameObject RightHandSpawnPoint;
@@ -21,11 +25,14 @@ public class BeatSaberManager : MonoBehaviour
     public GameObject FeetHitbox;
     public GameObject HandHitbox;
 
+    public int myLevel;
+
     public Animator animator;
     public GameObject Master;
     public float speed;
     Master MainMaster;
     private int levelToLoad;
+    public GameObject Player;
 
     //public float[] values;
 
@@ -156,7 +163,45 @@ public class BeatSaberManager : MonoBehaviour
             MainMaster.debugmode = debugMode;
         }
         // MainMaster.startTimer();
+
+
+        HeadTrigger = GameObject.FindGameObjectWithTag("Head Trigger");
+        RightArmTrigger = GameObject.FindGameObjectWithTag("Right Hand Trigger");
+        LeftArmTrigger = GameObject.FindGameObjectWithTag("Left Hand Trigger");
+        RightLegTrigger = GameObject.FindGameObjectWithTag("Right Leg Trigger");
+        LeftLegTrigger = GameObject.FindGameObjectWithTag("Left Leg Trigger");
+
+
+
+
+        //CapsulePlayerScriptHolder = GameObject.FindGameObjectsWithTag("CapsuleForLavaPlayerScript");
         CreateHitBox();
+        //
+        int health = MainMaster.ReturnHealth();
+        HeartController HScript = Hearts.GetComponent<HeartController>();
+        if (health ==4)
+        {
+            HScript.FourLife();
+        }
+        if (health == 3)
+        {
+            HScript.ThreeLife();
+        }
+        if (health == 2)
+        {
+            HScript.TwoLife();
+        }
+        if (health == 1)
+        {
+            HScript.OneLife();
+        }
+        MainMaster.Player = Player;
+        Console.WriteLine("Health: ",health.ToString());
+        int myScore = MainMaster.ReturnScore();
+        ScoreContainer sscript = ScoreController.GetComponent<ScoreContainer>();
+        sscript.UpdateScore((float)myScore);
+
+
     }
     public void OnFadeComplete()
     {
@@ -187,18 +232,25 @@ public class BeatSaberManager : MonoBehaviour
                 {
                     BadScore = BadScore + 1;
                 }
-                if(BadScore >= 2)
+                if(BadScore >= 10)
                 {
                     print("YO WE LOST");
                     print(MainMaster.TimeManager().ToString());
+                    MainMaster.AddToScore(-1);
+                    MainMaster.FailLevel(myLevel);
                 }
-                if (GoodScore >= 2)
+                if (GoodScore >= 15)
                 {
                     print("WINNINNNG");
                     MainMaster.AddToScore(1);
                     print(MainMaster.ReturnScore().ToString());
                     print(MainMaster.TimeManager().ToString());
                     //MainMaster.FadeToLevel(1);
+
+                    MainMaster.AddToScore(1);
+                    //MainMaster.IncreaseLevel();
+
+                    MainMaster.RandomLevel(myLevel);
                 }
                 Destroy(hitboxes[0]);
                 hitboxes.RemoveAt(0);
